@@ -1,4 +1,4 @@
-import { AppRegistry } from 'react-native';
-import App from './App';
+import {AppRegistry} from 'react-native';
+import Base from './src/Base';
 
-AppRegistry.registerComponent('eMochi', () => App);
+AppRegistry.registerComponent('eMochi', () => Base);
