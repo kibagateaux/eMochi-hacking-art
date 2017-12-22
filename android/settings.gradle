@@ -1,0 +1,3 @@
+rootProject.name = 'eMochi'
+
+include ':app'
