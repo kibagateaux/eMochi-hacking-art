@@ -1,12 +1,14 @@
 import {analytics} from '@lib/analytics';
 import {Analyics} from 'aws-amplify-react-native';
-import {TRACK_NAVIGATION} from '@actions/actionNames';
+import {isEmpty} from 'lodash';
 
-export const trackNavigation = (eventData = {}) => {
-  analytics.screen(eventData);
-  Analytics.record(eventData.name, eventData.traits);
-  return {
-    type: TRACK_NAVIGATION,
-    payload: eventData
+export const trackNavigation = (name, properties) => 
+  (dispatch, getStore) => {
+    const {user: {userId, anonymousId}} = getStore();
+    const id = userId ? {userId} : {anonymousId};
+    if(name && !isEmpty((id))) {
+      const eventData = {...id, name, properties};
+      analytics.screen(eventData);
+      Analytics.record(eventData.name, eventData.properties);
+    }
   }
-}
