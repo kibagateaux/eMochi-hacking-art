@@ -62,7 +62,8 @@ export default class extends PureComponent {
   render() {
     const {activeStats} = this.props
     return (
-      <ScrollView style={styles.container}> 
+      <ScrollView style={styles.container}>
+        <Text>Avatar Stats</Text>
         { activeStats ? this._renderStatsColumn(activeStats) : null }
       </ScrollView>
     )

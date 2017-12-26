@@ -2,6 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>URL Types</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>emochi</string>
+			</array>
+		</dict>
+	</array>
+	<key>branch_key</key>
+	<string>key_live_epEVOb5954FoVovCCf41NancEEk42LAC</string>
+	<key>branch_app_domain</key>
+	<string>emochi.app.link</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -39,9 +52,11 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>localhost</key>

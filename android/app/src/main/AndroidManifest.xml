@@ -10,6 +10,7 @@
         android:minSdkVersion="16"
         android:targetSdkVersion="22" />
 
+      <!-- android:name="com.emochi.CustomApplicationClass"       -->
     <application
       android:name=".MainApplication"
       android:allowBackup="true"
@@ -18,6 +19,7 @@
       android:theme="@style/AppTheme">
       <activity
         android:name=".MainActivity"
+        android:launchMode="singleTask"
         android:label="@string/app_name"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
         android:windowSoftInputMode="adjustResize">
@@ -25,8 +27,41 @@
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
-      </activity>
+
+        <!-- Branch URI Scheme -->
+        <intent-filter>
+            <data android:scheme="branchandroid" />
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+        </intent-filter>
+
+        <!-- Branch App Links (optional) -->
+        <intent-filter android:autoVerify="true">
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" android:host="emochi.app.link" />
+        </intent-filter>
+        </activity>
+
+        <!-- Branch init -->
+        <meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_epEVOb5954FoVovCCf41NancEEk42LAC" />
+        <meta-data android:name="io.branch.sdk.BranchKey.test" android:value="key_test_oeALNj3W65vgIlrrso39IpepvEm29Uym" />
+        <meta-data android:name="io.branch.sdk.TestMode" android:value="false" />
+
+        <!-- Branch install referrer tracking (optional) -->
+        <receiver android:name="io.branch.referral.InstallListener" android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+        
+
+
+
     </application>
 
 </manifest>
