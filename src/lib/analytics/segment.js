@@ -2,6 +2,6 @@ import {Platform} from 'react-native';
 import Analytics from 'analytics-react-native';
 
 const SEGMENT_API_KEY = Platform.OS === 'ios' ?
-  "NliDLm9qrv5ZXlvsAtAkeXs8o5NIHQbT" : "JydO1FucBehXnEyqcPX8pvwz8ObGl0eL";
+  "d4WwKMyso9lgj2W5rySmsnK7hc4AQVXg" : "Y0LoetQUTndDdUUMGIIMCQrPuYCtaE1H";
 
 export const analytics = new Analytics(SEGMENT_API_KEY);
