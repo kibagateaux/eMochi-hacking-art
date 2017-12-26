@@ -13,8 +13,10 @@ import {
   SocialIcon,
 } from 'react-native-elements';
 import {Auth} from 'aws-amplify-react-native';
-import styles from './styles';
+
 import {checkPhoneNumberLength} from '@helpers/validation';
+import {FACEBOOK_SIGNUP, USERNAME_SIGNUP} from '@constants/analytics'
+import styles from './styles';
 
 export default class SignUp extends React.Component {
   constructor(props) {
@@ -49,7 +51,8 @@ export default class SignUp extends React.Component {
   signUpUser(username, password, email, number) {
     Auth.signUp(username, password, email, number)
       .then((user) => {
-        this.props.navigateToLogin();
+        this.props.navigateToLogin({lastScreen: "Signup"});
+        this.props,trackUserBehaviour(USERNAME_SIGNUP, this.state);
       })
       .catch((error) => {
         this.setState({errorMessage: error.message});
@@ -61,6 +64,24 @@ export default class SignUp extends React.Component {
     const {password, phoneNumber} = this.state;
     const awsPhoneNumber = '+1' + phoneNumber;
     this.signUpUser(phoneNumber, password, null, awsPhoneNumber);
+  }
+
+  facebookLogin = () => {
+    console.warn ('implement log in with facebook')
+    const {trackUserBehaviour} = this.props;
+    trackUserBehaviour(FACEBOOK_SIGNUP, this.state)
+  }
+
+  navigateHome = () => {
+    const {trackUserBehaviour, navigateToHome} = this.props;
+    trackUserBehaviour("SKIP_SIGNUP_TO_HOME", this.state)
+    navigateToHome();
+  }
+
+  navigateLogin = () => {
+    const {trackUserBehaviour, navigateToLogin} = this.props;
+    trackUserBehaviour("NAVIGATE_TO_LOGIN_FROM_SIGNUP", this.state)
+    navigateToLogin();
   }
 
   render() {
@@ -123,7 +144,7 @@ export default class SignUp extends React.Component {
             button
             type='facebook'
             style={styles.facebookButton}
-            onPress={() => console.warn ('implement log in with facebook')}
+            onPress={this.facebookLogin}
           />
 
           <View style={styles.divider} />
@@ -131,13 +152,13 @@ export default class SignUp extends React.Component {
             <Button
               containerViewStyle={styles.altButton}
               buttonStyle={styles.altButton}
-              onPress={this.props.navigateToLogin}
+              onPress={this.navigateLogin}
               title="Login"
             />
             <Button
               containerViewStyle={styles.altButton}
               buttonStyle={styles.altButton}
-              onPress={this.props.navigateToHome}
+              onPress={this.navigateHome}
               title="Home"
             />
           </View>

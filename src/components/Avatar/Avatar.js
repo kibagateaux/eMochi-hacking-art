@@ -37,6 +37,8 @@ export default (props) => {
   // avatar  // https://github.com/react-native-community/react-native-video
   // environment
 
+
+  // TODO: Add analytics to button presses
   return (
     <View style={styles.container}>
       <Text style={styles.avatarTitleName}> {avatarName || "Faqir"} </Text>

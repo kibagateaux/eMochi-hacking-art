@@ -15,6 +15,7 @@ import {
 
 import {Auth} from 'aws-amplify-react-native';
 import {checkPhoneNumberLength} from '@helpers/validation';
+import {USER_LOGIN} from '@constants/analytics';
 import styles from './styles';
 
 export default class Login extends PureComponent {
@@ -32,7 +33,7 @@ export default class Login extends PureComponent {
 
   doLogin(phoneNumber, password) {
     Auth.signIn(phoneNumber, password)
-      .then(async (user) => {
+      .then(async ({username, authenticationFlowType, pool}) => {
         this.setState({showActivityIndicator: false})
         const {
           signInUser,
@@ -41,9 +42,16 @@ export default class Login extends PureComponent {
           navigateToHome,
           aliasAnonToUser,
           anonymousId,
+          trackUserBehaviour
         } = this.props;
-        signInUser({username: user.username});
-        aliasAnonToUser(anonymousId, user.username);
+        signInUser({username});
+        aliasAnonToUser(anonymousId, username);
+        trackUserBehaviour(USER_LOGIN, {
+          username,
+          authenticationFlowType,
+          pool,
+          ...this.state
+        });
         nextScreen ? nextScreen(nextScreenProps) : navigateToHome();
       })
       .catch((error) => {
@@ -57,6 +65,19 @@ export default class Login extends PureComponent {
     const {phoneNumber, password} = this.state;    
     this.setState({...this.baseState, showActivityIndicator: true});
     this.doLogin(phoneNumber, password);
+  }
+
+  navigateHome = () => {
+    const {trackUserBehaviour, navigateToHome} = this.props;
+    trackUserBehaviour("SKIP_LOGIN_TO_HOME", this.state)
+    navigateToHome();
+  }
+
+  navigateSignup = () => {
+    console.log('nav sign', this.props);
+    const {trackUserBehaviour, navigateToSignup} = this.props;
+    trackUserBehaviour("NAVIGATE_TO_SIGNUP_FROM_LOGIN", this.state)
+    navigateToSignup();
   }
 
   render() {
@@ -135,21 +156,21 @@ export default class Login extends PureComponent {
               raised
               buttonStyle={styles.altButton}
               containerViewStyle={styles.altButton}
-              onPress={this.props.navigateToHome}
+              onPress={this.navigateHome}
               title="Forgot Password"
             />
             <Button
               raised
               buttonStyle={styles.altButton}
               containerViewStyle={styles.altButton}
-              onPress={this.props.navigateToSignup}
+              onPress={this.navigateSignup}
               title="Signup"
             />
             <Button
               raised
               buttonStyle={styles.altButton}
               containerViewStyle={styles.altButton}
-              onPress={this.props.navigateToHome}
+              onPress={this.navigateHome}
               title="Skip Login"
             />
           </View>
