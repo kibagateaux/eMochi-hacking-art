@@ -7,25 +7,18 @@ import {localStatsAfterActivity} from '@lib/helpers/stats';
 
 export default (props) => {
   const {
-    userId,
     localStats,
-    anonymousId,
     updateLocalStats,
     setAvatarActivity,
     trackUserBehaviour,
   } = props;
-  const id = userId ? {userId} : {anonymousId};
   const onActivityPress = (activity) => {
     const eventData = {
-      ...id,
-      event: 'Local_Game_Action_Pressed',
-      properties: {
-        name: activity,
-        stats: localStats,
-      }
+      activityName: activity,
+      localStats
     };
     return () => {
-      trackUserBehaviour(eventData);
+      trackUserBehaviour('LOCAL_GAME_ACTION_PRESSED', eventData);
       updateLocalStats(localStatsAfterActivity(activity, localStats));
       setAvatarActivity(activity);
     };
