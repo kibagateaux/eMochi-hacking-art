@@ -17,7 +17,7 @@ export default ({onPress, activity}) => {
       case 'cycling': return 'blue';
       case 'running': return 'pink';
       case 'transport': return 'yellow';
-      case 'idl': return 'red';
+      case 'idle': return 'red';
       default: return 'red';
     }
   }
