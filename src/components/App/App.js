@@ -39,21 +39,25 @@ export default class App extends Component {
     //     }
     //   }
     // });
-    
-    const trackingId = props.user.userId ? 
-      {userId: props.user.userId} : {anonymousId: uuid.v4()}
-    const trackingData = {...trackingId, traits: {...props.user}};
-    props.identifyUser(trackingData);
-
     const {
-      user,
+      user: {
+        anonymousId,
+        userId
+      },
+      identifyUser,
       updateActivitiesList,
       updateDays
     } = props;
+    if(!anonymousId && !userId) {
+      const trackingId = userId ? 
+        {userId: userId} : {anonymousId: uuid.v4()}
+      const trackingData = {...trackingId, traits: {...props.user}};
+      props.identifyUser(trackingData);
+    }
 
     // refreshes user's cloud data on app load
-    if(user && user.userId) {
-      axios.get(`https://og1pdgpgji.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${user.userId}/4`)
+    if(userId) {
+      axios.get(`https://og1pdgpgji.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${userId}`)
       .then((res) => {
         if(!res.data) {
           // handle error for whatevs

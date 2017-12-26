@@ -16,7 +16,6 @@ const CONFIG = new AWS.Config({
   }),
   region: "us-east-1",
   accessKeyId: "AKIAJEAQEX3EW3RAC5BA",
-  secretAccessKey: "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",
   dynamoDbCrc32: false 
 })
 
