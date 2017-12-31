@@ -9,7 +9,8 @@ import {
   LoginScreen,
   SignupScreen,
   PersonalSettingsScreen,
-  OAuthScreen
+  OAuthScreen,
+  NonReferralIntro
 } from '@screens';
 
 import{
@@ -18,7 +19,8 @@ import{
   SIGNUP,
   SETTINGS,
   OAUTH,
-  INTEGRATIONS
+  INTEGRATIONS,
+  NON_REFERRAL_INTRO
 } from '@constants/routes';
 
 export default Actions.create(
@@ -26,6 +28,7 @@ export default Actions.create(
     <Scene hideNavBar key="index" component={App} />  
     <Scene hideNavBar key={HOME} component={App} />  
     <Scene hideNavBar key={LOGIN} title='Login Screen' component={LoginScreen} />
+    <Scene initial hideNavBar key={NON_REFERRAL_INTRO} title='Welcome Introduction' component={NonReferralIntro} />
     <Scene hideNavBar key={SIGNUP} title='Signup Screen' component={SignupScreen} />
     <Scene hideNavBar key={SETTINGS} title='Settings Screen' component={PersonalSettingsScreen} />
     <Scene hideNavBar key={INTEGRATIONS} title='Integrations Screen' component={PersonalSettingsScreen} />
