@@ -12,27 +12,27 @@ export default (props) => {
     description,
     onMainButtonPress,
     onAltButtonPress,
-    navigateToLogin
+    navigateToLogin,
+    user
   } = props;
 
   const renderLoggedOutText = () => (
     <View style={styles.loggedOutTextContainer}>
       <Text style={styles.loggedOutText}> 
-        You must be logged in to connect apps and train your avatar
+        You must be logged in to connect apps
+      </Text>
+      <Text style={styles.loggedOutText}> 
+        and train your avatar
       </Text>
       <ActionButton
         onPress={() => navigateToLogin(props)}
         style={styles.loginButton}
-      >
-        <Text> Login Now</Text>
-      </ActionButton>
+        secondaryColor
+        buttonText="Login Now"
+      />
     </View>
   );
   
-  console.log('app image', appLogo);
-  /* {((!user || !user.username) && 
-    renderLoggedOutText())} */
-
   return (
     <View style={styles.container}>
       <View style={styles.contentContainer}>
@@ -41,6 +41,8 @@ export default (props) => {
           <Text style={styles.appName}> {appName} </Text>
           <Text style={styles.description}> {description} </Text>
         </View>
+        {((!user || !user.username) && 
+          renderLoggedOutText())} 
         <View style={styles.buttonContainer}>
           <ActionButton
             style={styles.actionButton}          

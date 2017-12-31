@@ -19,6 +19,7 @@ export default (props) => {
     <TouchableOpacity style={[{backgroundColor}, style]} onPress={onPress}>
       <Text> {buttonText} </Text>
       <Text> {icon} </Text>
+      {props.children}
     </TouchableOpacity>
   )
 }

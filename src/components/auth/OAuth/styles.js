@@ -6,8 +6,8 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     position: 'absolute',
-    height: height / 2,
-    marginTop: height / 5,
+    height: height / 1.25,
+    marginVertical: height / 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
     // backgroundColor: colors.primary,
@@ -26,7 +26,7 @@ export default StyleSheet.create({
   },
   appLogo: {
     height: height / 6,
-    width: height/ 6
+    width: height / 6
   },
   appName: {
     fontSize: font.size.large,
@@ -37,11 +37,21 @@ export default StyleSheet.create({
     fontSize: font.size.normal,
     zIndex: 3,      
   },
+  loggedOutText: {
+    textAlign: 'center',
+  },
+  loginButton: {
+    width: width / 3,
+    alignItems: 'center',
+    alignSelf: 'center',
+    margin: 20
+  },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
   actionButton: {
     padding: width / 20,
+    alignItems: 'center'
   }
 });

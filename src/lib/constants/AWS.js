@@ -21,14 +21,4 @@ const CONFIG = new AWS.Config({
 
 
 export const Lambda = new AWS.Lambda(CONFIG);
-// AWS.config.update({
-//   accessKeyId: "AKIAJEAQEX3EW3RAC5BA",
-//   region:"us-east-1",
-//   dynamoDbCrc32: false // disable SDK-side crc32 check
-// });
-
-// AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-//   IdentityPoolId: "us-east-1:bd9721cf-a06c-416f-bf28-ca2513b2cb77",
-// });
-
 export const initAWS = () => AWS.config.update(CONFIG);

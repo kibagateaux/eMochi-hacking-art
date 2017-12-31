@@ -4,7 +4,7 @@ import {navigateTo} from '@actions/navigation/navigateTo';
 import {HOME, SIGNUP, LOGIN, OAUTH} from '@constants/routes';
 
 const mapStateToProps = (state) => ({
-
+  user: state.user
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => ({
     navigateTo(LOGIN, {nextScreenProps: options})),
 });
 
-export default connect(null, mapDispatchToProps)(OAuth)
+export default connect(mapStateToProps, mapDispatchToProps)(OAuth)

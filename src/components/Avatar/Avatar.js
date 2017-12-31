@@ -41,7 +41,7 @@ export default (props) => {
   // TODO: Add analytics to button presses
   return (
     <View style={styles.container}>
-      <Text style={styles.avatarTitleName}> {avatarName || "Faqir"} </Text>
+      <Text style={styles.avatarTitleName}> {avatarName || "eMochi"} </Text>
       {(medium.type === "video") ?
         null
         // <Video
