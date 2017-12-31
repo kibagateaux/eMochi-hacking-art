@@ -40,21 +40,11 @@ export default class App extends Component {
     //   }
     // });
     const {
-      user: {
-        anonymousId,
-        userId
-      },
+      user: { userId },
       identifyUser,
       updateActivitiesList,
       updateDays
     } = props;
-    if(!anonymousId && !userId) {
-      const trackingId = userId ? 
-        {userId: userId} : {anonymousId: uuid.v4()}
-      const trackingData = {...trackingId, traits: {...props.user}};
-      props.identifyUser(trackingData);
-    }
-
     // refreshes user's cloud data on app load
     if(userId) {
       axios.get(`https://og1pdgpgji.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${userId}`)
