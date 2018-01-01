@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import {ScrollView, View, Image} from 'react-native';
 import axios from 'axios';
-// import branch from 'react-native-branch';
+import branch from 'react-native-branch';
 import uuid from 'uuid';
 
-// import {_handleBranchRouting} from '@lib/analytics';
 import HomeProfile from '@containers/HomeProfile';
 import LocalGame from '@containers/LocalGame';
 import DailyProfileList from '@containers/DailyProfileList';
-import {Lambda} from '@constants/AWS';
 
 import styles from './styles';
 
@@ -16,29 +14,12 @@ export default class App extends Component {
   constructor(props){
     super(props);
     // branch.subscribe(props.handleBranchRouting);
-    // this.branchUnsubcription = branch.subscribe(({params, error}) => {
-    //   const url = params['+url'] || params['+non_branch_link'];
-    //   console.log('deepl link url', url);
-    //   if(params['+non_branch_link']) {
-    //     console.log('auth', resource, access_token); 
-    //     const tokenRegex = /.*access_token=(\w*).*refresh_token=(\w*).*/;
-    //     const tokens = tokenRegex.exec(url);
-    //     const access_token = tokens ? tokens[1] : 'a';
-    //     const refresh_token = tokens ? tokens[2] : 'b';    
-    //     const [_, __, service, resource, id] = resources = params['+non_branch_link'].split('/');
-    //     console.log('non branch link', service + '/' + resource + '/' + id);
-    //     if(service === 'auth'){
-    //       const tokenObj = {
-    //         [resource]: {
-    //           access_token,
-    //           refresh_token
-    //         }
-    //       };
-    //       console.log('auth service', resource, tokenObj);          
-    //       // props.updateTokens(tokenObj); // shouldn't update tokens outside server, will be handled in callback Lambda
-    //     }
-    //   }
-    // });
+    this.branchUnsubcription = branch.subscribe(({params, error}) => {
+      const url = params['+url'] || params['+non_branch_link'];
+      console.log('deepl link url', params, url);
+      if(params['+non_branch_link']) {
+      }
+    });
     const {
       user: { userId },
       identifyUser,
@@ -87,7 +68,7 @@ export default class App extends Component {
   }
 
   componentWillUnmount(e) {
-    (this.branchUnsubcription && this.branchUnsubcription());    
+    this.branchUnsubcription();
   }
 
   _renderLowerPanel = () =>
