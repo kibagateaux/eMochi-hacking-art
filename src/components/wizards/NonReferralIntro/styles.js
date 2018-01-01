@@ -28,7 +28,20 @@ export default StyleSheet.create({
   bottomContainer: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    paddingVertical: height / 24
+  },
+  namingContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    paddingVertical: height / 24,
+    // width: width
+  },
+  nameInputContainerStyles: {
+    // paddingVertical: height / 24,
+    // margin: 0,
+    marginLeft: 0,
+    marginRight: 0
   },
   welcomeText: {
     fontSize: font.size.large,
@@ -40,15 +53,11 @@ export default StyleSheet.create({
     textAlign: 'center',
     alignSelf: 'center'
   },
-  skipButtonContainer: {
-
-  },
-  skipButton: {
+  primaryButton: {
     backgroundColor: colors.primary,
     alignSelf: 'center',
     width: width * (0.16 * 5)
+    marginVertical: height / 24
   },
-  skipText: {
 
-  },
 });

@@ -36,15 +36,14 @@ export default (props) => {
           {slideText}
         </Text>
         
-        <Button
-          containerStyle={styles.skipButtonContainer}
-          buttonStyle={styles.skipButton}
-          iconRight={{name: 'code'}}
-          title='SKIP'
-        >
-          <Text style={styles.skipText}> Skip </Text>
-        </Button>
       </View>
     </View>
   );
 }
+{/* <Button
+  raised
+  title='SKIP'
+  containerStyle={styles.skipButtonContainer}
+  buttonStyle={styles.skipButton}
+  iconRight={{name: 'code'}}
+/> */}

@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 
-import NamingScreen from './name'; // not implemented yet
+import NamingScreen from './name';
 import WelcomeScreen from './welcome';
 import {SignupScreen} from '@screens';
 
@@ -13,7 +13,7 @@ import {SignupScreen} from '@screens';
 // import styles from './styles';
 
 export default (props) => {
-  console.log('app intro', props);
+  console.log('intro prop', props);
   return (
     <Swiper
       showsButtons
@@ -32,6 +32,10 @@ export default (props) => {
       <WelcomeScreen
         overlayImage={require('../../../lib/media/gif/running-bebo.gif')}
         slideText={"He grows whenever you walk, run, or eat well."}
+      />
+      <NamingScreen
+        overlayImage={require('../../../lib/media/gif/Panda-Blob.gif')}
+        updateUser={props.updateUser}
       />
       <SignupScreen />
     </Swiper>

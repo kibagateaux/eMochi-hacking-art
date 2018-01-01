@@ -3,9 +3,12 @@ import {AsyncStorage} from 'react-native';
 import {USER_PROFILE} from '@constants/asyncStorage';
 
 export const updateUser = (payload) => {
-  const profile = await AsyncStorage.getItem(USER_PROFILE);
-  const updatedProfile = {...profile, userId: payload};
-  AsyncStorage.setItem(USER_PROFILE, JSON.stringify(updatedProfile));
+  AsyncStorage.getItem(USER_PROFILE).then((res = "{}") => {
+    console.log('update user', res);
+    const profile = JSON.parse(res);
+    const updatedProfile = {...profile,  ...payload};
+    AsyncStorage.setItem(USER_PROFILE, JSON.stringify(updatedProfile));
+  }).catch((error) => console.log("error updatingUser", error));
   return ({
     type: UPDATE_USER,
     payload

@@ -1,4 +1,4 @@
-import NonReferralIntro from '@components/wizards/non-referral-introduction';
+import NonReferralIntro from '@containers/wizards/NonReferralIntro';
 
 export {
   NonReferralIntro

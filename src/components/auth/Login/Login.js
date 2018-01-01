@@ -125,7 +125,7 @@ export default class Login extends PureComponent {
             value={phoneNumber}
           />
           <FormLabel>
-            {/* <Icon
+            {/* Platform === ios && <Icon
               name="lock-open" 
               iconStyle={styles.labelIcon}
               containerStyle={styles.labelIcon}
@@ -139,6 +139,7 @@ export default class Login extends PureComponent {
             secureTextEntry={true}
             placeholder="Password"
             returnKeyType="next"
+            // inlineImageLeft for android https://facebook.github.io/react-native/docs/textinput.html#inlineimageleft
             onChangeText={(password) => this.setState({password})}            
             value={password}
           />

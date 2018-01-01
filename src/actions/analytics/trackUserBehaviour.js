@@ -7,7 +7,6 @@ export const trackUserBehaviour = (event, properties = {}) =>
   (dispatch, getStore) => {
     const {user: {userId, anonymousId}} = getStore();
     const id = userId ? {userId} : {anonymousId};
-    console.log('track user behaviour', id, event, properties);
     if(event && !(isEmpty(id))){
       const eventData = {...id, event, properties};
       analytics.track(eventData);

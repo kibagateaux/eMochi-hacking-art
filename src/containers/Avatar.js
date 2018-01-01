@@ -13,6 +13,7 @@ import {SETTINGS} from '@constants/routes';
 
 const mapStateToProps = (state) => ({
   activity: state.activities.avatarActivity,
+  emochiName: state.user.emochiName
 });
 
 const mapDispatchToProps = (dispatch) => ({

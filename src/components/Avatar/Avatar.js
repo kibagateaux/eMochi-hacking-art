@@ -26,7 +26,7 @@ export default (props) => {
     activity,
     navigateToSettings,
     updateLocalGameMode,
-    avatarName
+    emochiName
   } = props;
 
   const medium = avatarSelector(activity);
@@ -41,7 +41,7 @@ export default (props) => {
   // TODO: Add analytics to button presses
   return (
     <View style={styles.container}>
-      <Text style={styles.avatarTitleName}> {avatarName || "eMochi"} </Text>
+      <Text style={styles.avatarTitleName}> {emochiName || "eMochi"} </Text>
       {(medium.type === "video") ?
         null
         // <Video
