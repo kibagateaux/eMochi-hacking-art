@@ -1,7 +1,7 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import {font, colors} from '@constants/style';
 const {height, width} = Dimensions.get('window');
-
+const paddingVertical = height / 24
 export default StyleSheet.create({
   container: {
     flex: 1,
@@ -15,7 +15,7 @@ export default StyleSheet.create({
     position: 'absolute',
     top: 0,
     left: 0,
-    height: height / 2,
+    height: height / 2.1,
     width: width,    
     alignSelf: 'center'
   },
@@ -28,18 +28,22 @@ export default StyleSheet.create({
   bottomContainer: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'space-around',
-    paddingVertical: height / 24
+    justifyContent: 'flex-start',
+    paddingVertical
   },
   namingContainer: {
     flex: 1,
     flexDirection: 'column',
-    paddingVertical: height / 24,
-    // width: width
+    paddingVertical,
   },
-  nameInputContainerStyles: {
-    // paddingVertical: height / 24,
-    // margin: 0,
+  namingMessageContainer: {
+    paddingVertical,
+    paddingHorizontal: width / 24
+  },
+  name: {
+    fontWeight: font.weight.bold
+  },
+  noMargin: {
     marginLeft: 0,
     marginRight: 0
   },
@@ -47,6 +51,7 @@ export default StyleSheet.create({
     fontSize: font.size.large,
     fontWeight: font.weight.bold,
     textAlign: 'center',
+    paddingVertical
   },
   slideText: {
     width: width / 1.16,
@@ -56,8 +61,8 @@ export default StyleSheet.create({
   primaryButton: {
     backgroundColor: colors.primary,
     alignSelf: 'center',
-    width: width * (0.16 * 5)
-    marginVertical: height / 24
+    width: width * (0.16 * 5),
+    marginVertical: paddingVertical
   },
 
 });

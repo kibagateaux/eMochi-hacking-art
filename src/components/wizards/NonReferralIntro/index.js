@@ -13,7 +13,6 @@ import {SignupScreen} from '@screens';
 // import styles from './styles';
 
 export default (props) => {
-  console.log('intro prop', props);
   return (
     <Swiper
       showsButtons

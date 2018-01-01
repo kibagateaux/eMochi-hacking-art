@@ -17,18 +17,60 @@ export default class extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-
+      nameInput: true
     };
   }
 
   onChangeText = (emochiName, e) => {
-    console.log('on txt', emochiName, e);
     this.setState({emochiName})
   }
 
   onButtonPress = () => {
-    console.log('name press', this.state);
-    this.props.updateUser(this.state);
+    const {emochiName, nameInput} = this.state
+    this.props.updateUser({emochiName});
+    console.log('on btn pres', nameInput);
+    this.setState({nameInput: !nameInput});
+  }
+
+  renderNameInput() {
+    return (
+      <View style={styles.namingContainer}>
+        <FormLabel containerStyle={styles.noMargin}>
+          <Text> Name Your eMochi! </Text>
+        </FormLabel>
+        <FormInput
+          containerStyle={styles.noMargin}
+          returnKeyType="next"
+          onChangeText={this.onChangeText}
+          autoCapitalize="words"
+          placeholder="BeBo"
+        />
+        <Button
+          buttonStyle={styles.primaryButton}
+          containerStyle={styles.primaryButton}
+          title="Perform Naming Ritual"
+          onPress={this.onButtonPress}
+        />
+      </View>
+    )
+  }
+
+  renderMessage() {
+    return (
+      <View style={styles.namingContainer}>
+        <View style={styles.namingMessageContainer}>
+          <Text> Congratz! <Text style={styles.name}> {this.state.emochiName} </Text> is officially your new virtual pet.</Text>
+          
+          <Text> Press next to signup and save <Text style={styles.name}> {this.state.emochiName} </Text> to your profile or go straight to the game </Text>
+        </View>
+        <Button
+          buttonStyle={styles.primaryButton}
+          containerStyle={styles.primaryButton}
+          title="Rename"
+          onPress={this.onButtonPress}
+        />
+      </View>
+    )
   }
 
   render() {
@@ -46,24 +88,7 @@ export default class extends PureComponent {
             resizeMode='cover'
           />
         </View>
-        <View style={styles.namingContainer}>
-          <FormLabel>
-            <Text> Name Your eMochi! </Text>
-          </FormLabel>
-          <FormInput
-            containerStyle={styles.nameInputContainerStyles}
-            returnKeyType="next"
-            onChangeText={this.onChangeText}
-            autoCapitalize="words"
-            placeholder="BeBo"
-          />
-          <Button
-            buttonStyle={styles.primaryButton}
-            containerStyle={styles.primaryButton}
-            title="Perform Naming Ritual"
-            onPress={this.onButtonPress}
-          />
-        </View>
+        {this.state.nameInput ? this.renderNameInput() : this.renderMessage()}
       </View>
     )
   }

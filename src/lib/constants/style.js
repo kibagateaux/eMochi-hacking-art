@@ -10,6 +10,7 @@ const font = {
     light: '200',
     normal: '500',
     heavy: '600',
+    bold: '600',
     sumo: '800'
   }
 };
