@@ -1,10 +1,12 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import {font} from '@constants/style';
 const {height, width} = Dimensions.get("window");
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column"
+    flexDirection: "column",
+    justifyContent: 'space-around'
   },
   avatar: {
     width: height / 3,
@@ -19,7 +21,8 @@ export default StyleSheet.create({
     height: height / 30,
     width: height / 30,
   },
-  avatarTitleName: {
+  avatarName: {
+    fontSize: font.size.large,
     alignSelf: "center",
     textAlign: "center"
   }

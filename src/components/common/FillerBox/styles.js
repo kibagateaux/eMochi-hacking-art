@@ -24,7 +24,8 @@ export default {
   },
   mainText: {
     flex: 2,
-    fontSize: font.size.large
+    fontSize: font.size.large,
+    textAlign: "center",
   },
   get mainButton () {
     return ({

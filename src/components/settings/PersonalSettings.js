@@ -13,8 +13,11 @@ export default (props) => {
     navigateToLogin,
     navigateToOAuth,
     navigateToSignUp,
-    initIntegrationAuth
+    navigateToHome,
+    initIntegrationAuth,
+    updateLocalGameMode
   } = props;
+  console.log('setting tog lcl mode', updateLocalGameMode);
   const _getSettingsList = () => ([
     // {
     //   label: "Integrations",
@@ -27,6 +30,10 @@ export default (props) => {
     {
       label: "SignUp",
       onPress: () => navigateToSignUp()
+    },
+    {
+      label: "Change Game Mode",
+      onPress: () => {updateLocalGameMode();navigateToHome({type: "reset"});}
     },
     {
       label: "Moves",

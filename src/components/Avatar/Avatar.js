@@ -41,7 +41,7 @@ export default (props) => {
   // TODO: Add analytics to button presses
   return (
     <View style={styles.container}>
-      <Text style={styles.avatarTitleName}> {emochiName || "eMochi"} </Text>
+      <Text style={styles.avatarName}> {emochiName || "eMochi"} </Text>
       {(medium.type === "video") ?
         null
         // <Video
@@ -54,15 +54,6 @@ export default (props) => {
           style={styles.avatar} 
           resizeMode="contain"
         />}
-
-      <View style={styles.iconContainer}>
-        <TouchableOpacity onPress={navigateToSettings}>
-          <Icon name="settings" size={24} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={updateLocalGameMode}>
-          <Icon name="repeat" size={24}/>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 }

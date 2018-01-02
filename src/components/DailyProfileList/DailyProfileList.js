@@ -30,8 +30,8 @@ export default class extends PureComponent {
     } = this.props;
     // first check if they have integrations and call updateData
     const mainText = userId ? 
-      "No data available, connect more apps to see your Jinni's training regimine" :
-      "You must sign in in order to see your pet's activity";
+      `No data available, connect more apps to start training ${emochiName || 'your pet'}` :
+      `Sign in in order to see ${emochiName || 'your pet'}'s training activity`;
     const mainButtonFunc = userId ? navigateToIntegations : navigateToLogin;
     const mainButtonText = userId ? "CONNECT APPS" : "LOGIN";
 
@@ -45,7 +45,7 @@ export default class extends PureComponent {
         {userId && (
           <View stlye={{flex: 1}}>
             <View style={styles.headerMessageContainer}>
-              <Text style={styles.headerMessageText}> No data available, connect more apps </Text>
+              <Text style={styles.headerMessageText}> No data available, connect some apps </Text>
               <Text style={styles.headerMessageText}> to train 
                 {(emochiName && <Text style={styles.emochiName}> {emochiName} </Text>) || "your pet"}
                 with your activity

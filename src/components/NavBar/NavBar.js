@@ -11,17 +11,11 @@ import Actions from 'react-native-router-flux';
 import styles from './styles';
 
 export default (props) => {
-  const route = props.scene.route.routeName;
-  const {navigate, goBack} = props.navigation;
-  const isHome = route === "home";
   const lastScene = props.scenes[props.scenes.length - 2];
-  const leftIcon = !lastScene ? "menu" : "keyboard-backspace";
-  
-  const leftPress = (props.scenes.length <= 1) ?
+  const leftIcon = props.leftIcon || !lastScene ? "menu" : "keyboard-backspace";
+  const leftPress = props.leftPress || (props.scenes.length <= 1) ?
   props.navigateToSettings : () => props.navigateBack()
-  const rightIcon = "emochi symbol";
-  console.log('navbar', props, lastScene, leftPress);
-
+  const routeName = props.scene.route.routeName;
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={leftPress} style={styles.leftIcon}>
@@ -30,7 +24,7 @@ export default (props) => {
           type="MaterialCommunityIcons"
         />
       </TouchableOpacity>
-      <Text style={styles.routeName}> {route.toUpperCase()} </Text>
+      <Text style={styles.routeName}> {routeName.toUpperCase()} </Text>
       <Image
         resizeMode="contain"
         style={styles.rightIcon}

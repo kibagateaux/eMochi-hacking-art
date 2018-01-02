@@ -37,7 +37,7 @@ export default (props) => {
     </View>
   );
   
-  const onConnenctPress = () => {
+  const onConnectPress = () => {
     const integrationFunction = onMainButtonPress || initIntegrationAuth;
     console.log('int func', integrationFunction);
     integrationFunction(appName);
@@ -55,11 +55,12 @@ export default (props) => {
         {(!user.userId && 
           renderLoggedOutText())} 
         <View style={styles.buttonContainer}>
-        {(user.userId &&
+        {(user.userId && 
+          <Text> Make sure you have {appName} downloaded before connecting </Text> &&
           <ActionButton
             style={styles.actionButton}          
             buttonText="Connect App"
-            onPress={onConnenctPress}
+            onPress={onConnectPress}
             secondaryColor
           />)}
         </View>

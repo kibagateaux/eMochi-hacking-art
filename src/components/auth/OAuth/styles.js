@@ -5,8 +5,7 @@ import {font, colors} from '@constants/style';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    position: 'absolute',
-    // height: height / 1.25,
+    height: height / 1.25,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
