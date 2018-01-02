@@ -17,8 +17,8 @@ export default class App extends Component {
     this.branchUnsubcription = branch.subscribe(({params, error}) => {
       const url = params['+url'] || params['+non_branch_link'];
       console.log('branch link', params, url);
-      console.log('needs intro', params['+is_first_session'] || !props.user.emochiName);
-      if(params['+is_first_session'] || !props.user.emochiName) {
+      console.log('needs intro', params['+is_first_session'] || !props.user.emochiName, params['+is_first_session'], props.user.emochiName);
+      if(params['+is_first_session'] && !props.user.emochiName) {
         console.log('nav to intro', );
         props.navigateToNonReferralIntro({params, user: props.user});
       }

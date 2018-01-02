@@ -5,20 +5,15 @@ import {font, colors} from '@constants/style';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    height: height / 1.25,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  contentContainer: {
+    height: height / 1.16,
     flexDirection: 'column',
-    justifyContent: 'space-around',
-    backgroundColor: colors.primary
+    // justifyContent: 'space-between',
   },
   header: {
-    height: height / 10,
+    height: height / 3,
     width: width,
     zIndex: 5,
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
   },
   appLogo: {

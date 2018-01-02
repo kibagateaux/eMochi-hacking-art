@@ -5,10 +5,6 @@ import {
   UPDATE_ACTIVITIES_LIST
 } from '@actions/actionNames';
 
-import mockData from '@lib/movesData';
-
-const activities = mockData.reduce((list, day) => ({...list, ...day.activities}), {});
-
 const INITIAL_STATE = {
   activities: {},
   activeActivity: {},

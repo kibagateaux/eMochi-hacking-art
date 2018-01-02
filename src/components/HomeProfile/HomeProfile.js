@@ -10,6 +10,10 @@ export default (props) => {
       <View style={styles.avatarContainer}>
         <Avatar />
       </View>
+      {props.localMode && (
+        <View style={styles.statsContainer}>
+          <StatsTable />
+        </View>)}
     </View>
   )
 }

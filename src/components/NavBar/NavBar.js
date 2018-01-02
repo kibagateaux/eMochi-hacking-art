@@ -15,7 +15,6 @@ export default (props) => {
   const leftIcon = props.leftIcon || !lastScene ? "menu" : "keyboard-backspace";
   const leftPress = props.leftPress || (props.scenes.length <= 1) ?
   props.navigateToSettings : () => props.navigateBack()
-  const routeName = props.scene.route.routeName;
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={leftPress} style={styles.leftIcon}>
@@ -24,7 +23,7 @@ export default (props) => {
           type="MaterialCommunityIcons"
         />
       </TouchableOpacity>
-      <Text style={styles.routeName}> {routeName.toUpperCase()} </Text>
+      <Text style={styles.routeName}> eMochi </Text>
       <Image
         resizeMode="contain"
         style={styles.rightIcon}

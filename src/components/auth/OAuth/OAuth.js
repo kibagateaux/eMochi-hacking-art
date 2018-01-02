@@ -38,32 +38,28 @@ export default (props) => {
   );
   
   const onConnectPress = () => {
-    const integrationFunction = onMainButtonPress || initIntegrationAuth;
-    console.log('int func', integrationFunction);
-    integrationFunction(appName);
+    initIntegrationAuth(appName);
     trackUserBehaviour(CONNECT_THIRD_PARTY_APP, {appName, description});
   };
 
   return (
     <View style={styles.container}>
-      <View style={styles.contentContainer}>
-        <View style={styles.header}>
-          <Image source={appLogo} style={styles.appLogo}/>
-          <Text style={styles.appName}> {appName} </Text>
-          <Text style={styles.description}> {description} </Text>
-        </View>
-        {(!user.userId && 
-          renderLoggedOutText())} 
-        <View style={styles.buttonContainer}>
-        {(user.userId && 
-          <Text> Make sure you have {appName} downloaded before connecting </Text> &&
-          <ActionButton
-            style={styles.actionButton}          
-            buttonText="Connect App"
-            onPress={onConnectPress}
-            secondaryColor
-          />)}
-        </View>
+      <View style={styles.header}>
+        <Image source={appLogo} style={styles.appLogo}/>
+        <Text style={styles.appName}> {appName} </Text>
+        <Text style={styles.description}> {description} </Text>
+      </View>
+      {(!user.userId && 
+        renderLoggedOutText())} 
+      <View style={styles.buttonContainer}>
+      {(user.userId && 
+        <Text> Make sure you have {appName} downloaded before connecting </Text> &&
+        <ActionButton
+          style={styles.actionButton}          
+          buttonText="Connect App"
+          onPress={onConnectPress}
+          secondaryColor
+        />)}
       </View>
     </View>
   );

@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import Settings from '@components/settings/';
 import styles from './styles';
-import {integrationServices} from '@constants/integrations';
+import {Moves} from '@constants/integrations';
 
 export default (props) => {
   const {
@@ -17,7 +17,6 @@ export default (props) => {
     initIntegrationAuth,
     updateLocalGameMode
   } = props;
-  console.log('setting tog lcl mode', updateLocalGameMode);
   const _getSettingsList = () => ([
     // {
     //   label: "Integrations",
@@ -38,11 +37,9 @@ export default (props) => {
     {
       label: "Moves",
       onPress: () => navigateToOAuth({
-        appName:"Moves",
-        appLogo: require("@media/image/logos/moves-app-logo.png"),
-        description: "A beautifulyl designed activity monitoring app.",
-        onMainButtonPress: () => {
-          initIntegrationAuth(integrationServices.Moves)
+        ...Moves,
+        onMainButtonPress: (appData) => {
+          initIntegrationAuth(appData)
         },
         onAltButtonPress: () => navigateToIntegrations()
       })

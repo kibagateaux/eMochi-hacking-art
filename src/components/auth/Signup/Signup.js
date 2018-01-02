@@ -51,8 +51,8 @@ export default class SignUp extends React.Component {
   signUpUser(username, password, email, number) {
     Auth.signUp(username, password, email, number)
       .then((user) => {
-        this.props.navigateToLogin({lastScreen: "Signup"});
         this.props,trackUserBehaviour(USERNAME_SIGNUP, this.state);
+        this.props.navigateToLogin({lastScreen: "Signup"});
       })
       .catch((error) => {
         this.setState({errorMessage: error.message});
@@ -139,13 +139,13 @@ export default class SignUp extends React.Component {
 
           <View style={styles.divider}/>
           
-          <SocialIcon
+          {/* <SocialIcon
             title='Sign Up With Facebook'
             button
             type='facebook'
             style={styles.facebookButton}
             onPress={this.facebookLogin}
-          />
+          /> */}
 
           <View style={styles.divider} />
           <View style={styles.altButtonContainer}> 
