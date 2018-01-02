@@ -6,6 +6,6 @@ import {updateLocalStats} from '@actions/stats/updateLocalStats';
 
 export const getLocalStats = () => async (dispatch) => {
   const localStats = await AsyncStorage.getItem(LOCAL_STATS);
-  const stats = localStats.length > 0 ? JSON.parse(localStats) : {}
-  dispatch(updateLocalStats(stats))
+  const stats = localStats ? JSON.parse(localStats) : {}
+  dispatch(updateLocalStats(stats));
 };
