@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, Image} from 'react-native';
 import ActionButton from '@components/common/ActionButton/ActionButton';
 import styles from './styles';
+import {CONNECT_THIRD_PARTY_APP} from '@constants/analytics';
 
 // default background, centered card with app name,
 // which permissions and why the app will help them.
@@ -13,7 +14,8 @@ export default (props) => {
     onMainButtonPress,
     onAltButtonPress,
     navigateToLogin,
-    user
+    user,
+    trackUserBehaviour
   } = props;
 
   const renderLoggedOutText = () => (
@@ -33,6 +35,11 @@ export default (props) => {
     </View>
   );
   
+  const onConnenctPress = () => {
+    onMainButtonPress();
+    trackUserBehaviour(CONNECT_THIRD_PARTY_APP, {appName, description});
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.contentContainer}>
@@ -41,13 +48,13 @@ export default (props) => {
           <Text style={styles.appName}> {appName} </Text>
           <Text style={styles.description}> {description} </Text>
         </View>
-        {((!user || !user.username) && 
+        {(!user.userId && 
           renderLoggedOutText())} 
         <View style={styles.buttonContainer}>
           <ActionButton
             style={styles.actionButton}          
-            buttonText="Install App"
-            onPress={onMainButtonPress}
+            buttonText="Connect App"
+            onPress={onConnenctPress}
             secondaryColor
           />
           <ActionButton
