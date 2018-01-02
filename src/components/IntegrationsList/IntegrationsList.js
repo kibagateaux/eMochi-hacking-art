@@ -26,7 +26,6 @@ export default class extends Component {
   }
 
   renderItem = ({item}) => {
-    console.log('section item', this.props, item);
     const navToOauth = () => this.props.navigateToOAuth(item);
     return (
       <TouchableOpacity

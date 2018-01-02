@@ -35,8 +35,6 @@ export default class extends PureComponent {
     const mainButtonFunc = userId ? navigateToIntegations : navigateToLogin;
     const mainButtonText = userId ? "CONNECT APPS" : "LOGIN";
 
-    // if !userId then FillerBox
-    // else Integrations SectionList
     return (
       <View style={styles.fillerBoxContainer}>
         {!userId && <FillerBox 

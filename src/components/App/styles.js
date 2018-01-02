@@ -3,6 +3,5 @@ const {height, width} = Dimensions.get('window');
 export default StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: height/20
   }
 })

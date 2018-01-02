@@ -6,11 +6,9 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     position: 'absolute',
-    height: height / 1.25,
-    marginVertical: height / 20,
+    // height: height / 1.25,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // backgroundColor: colors.primary,
   },
   contentContainer: {
     flexDirection: 'column',

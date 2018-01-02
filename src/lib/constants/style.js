@@ -3,8 +3,9 @@ const {height, width} = Dimensions.get('window');
 
 const font = {
   size: {
-    normal: 14,
-    large: 21,
+    normal: 12,
+    medium: 18,
+    large: 24,
   },
   weight: {
     light: '200',

@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   navigateToLogin: () => dispatch(navigateTo(LOGIN)),
-  navigateToHome: () => dispatch(navigateTo(HOME)),
+  navigateToHome: () => dispatch(navigateTo(HOME, {type: 'reset'})),
   trackUserBehaviour: (eventName, eventData) => dispatch(trackUserBehaviour(eventName, eventData))
 });
 
