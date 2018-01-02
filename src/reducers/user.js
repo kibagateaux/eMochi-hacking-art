@@ -9,9 +9,9 @@ import {
 INITIAL_STATE = {
   localMode: false,
   user: null,
-  userId: null,
+  userId: "0",
   anonymousId: null,
-  emochiName: null
+  emochiName: "Bebo"
 };
 
 export default (state = INITIAL_STATE, {type, payload}) => {

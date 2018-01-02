@@ -6,13 +6,20 @@ export default StyleSheet.create({
   container: {
     flex: 1
   },
+  headerMessageContainer: {
+    marginBottom: height / 36
+  },
+  headerMessageText: {
+    textAlign: 'center',
+    fontSize: font.size.large
+  },
   centerText: {
     textAlign: 'center',
     fontWeight: font.weight.bold  
   },
   fillerBoxContainer: {
-    height: height / 5,
-    marginTop: height / 10,
+    flex: 1,
+    marginTop: height / 24,
     justifyContent: 'center',
     alignItems: 'center',
   },

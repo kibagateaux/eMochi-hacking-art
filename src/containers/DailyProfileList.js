@@ -12,7 +12,8 @@ const mapStateToProps = (state) => ({
   user: state.user,
   userId: state.user.userId,
   days: state.days,
-  activities: state.activities
+  activities: state.activities,
+  emochiName: state.user.emochiName
 });
 
 const mapDispatchToProps = (dispatch) => ({

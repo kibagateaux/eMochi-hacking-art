@@ -1,10 +1,11 @@
 import React, {PureComponent} from 'react';
 import {ScrollView, View, Text} from 'react-native';
+import {Icon} from 'react-native-elements';
 import _ from 'lodash';
 
 import DailyProfile from '@containers/DailyProfile';
 import FillerBox from '@components/common/FillerBox/FillerBox'; 
-import {Icon} from 'react-native-elements';
+import IntegrationsList from '@containers/IntegrationsList';
 
 import styles from './styles';
 
@@ -22,6 +23,7 @@ export default class extends PureComponent {
 
   _renderFillerBox() {
     const {
+      emochiName,
       userId,
       navigateToIntegations,
       navigateToLogin,
@@ -32,16 +34,28 @@ export default class extends PureComponent {
       "You must sign in in order to see your pet's activity";
     const mainButtonFunc = userId ? navigateToIntegations : navigateToLogin;
     const mainButtonText = userId ? "CONNECT APPS" : "LOGIN";
-    
+
     // if !userId then FillerBox
     // else Integrations SectionList
     return (
       <View style={styles.fillerBoxContainer}>
-        <FillerBox
+        {!userId && <FillerBox 
           mainText={mainText}
           mainButtonFunc={mainButtonFunc}
           mainButtonText={mainButtonText}
-        />
+        />}
+        {userId && (
+          <View stlye={{flex: 1}}>
+            <View style={styles.headerMessageContainer}>
+              <Text style={styles.headerMessageText}> No data available, connect more apps </Text>
+              <Text style={styles.headerMessageText}> to train 
+                {(emochiName && <Text style={styles.emochiName}> {emochiName} </Text>) || "your pet"}
+                with your activity
+              </Text>
+            </View>
+            <IntegrationsList />
+          </View>
+        )}
       </View>
     )
   }

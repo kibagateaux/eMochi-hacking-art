@@ -35,7 +35,7 @@ export default (props) => {
         appLogo: require("@media/image/logos/moves-app-logo.png"),
         description: "A beautifulyl designed activity monitoring app.",
         onMainButtonPress: () => {
-          initIntegrationAuth(integrationServices.moves)
+          initIntegrationAuth(integrationServices.Moves)
         },
         onAltButtonPress: () => navigateToIntegrations()
       })

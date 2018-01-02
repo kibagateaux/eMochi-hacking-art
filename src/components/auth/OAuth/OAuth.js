@@ -15,9 +15,11 @@ export default (props) => {
     onAltButtonPress,
     navigateToLogin,
     user,
-    trackUserBehaviour
+    trackUserBehaviour,
+    initIntegrationAuth
   } = props;
 
+  console.log('oauth', props);
   const renderLoggedOutText = () => (
     <View style={styles.loggedOutTextContainer}>
       <Text style={styles.loggedOutText}> 
@@ -36,7 +38,9 @@ export default (props) => {
   );
   
   const onConnenctPress = () => {
-    onMainButtonPress();
+    const integrationFunction = onMainButtonPress || initIntegrationAuth;
+    console.log('int func', integrationFunction);
+    integrationFunction(appName);
     trackUserBehaviour(CONNECT_THIRD_PARTY_APP, {appName, description});
   };
 
@@ -51,18 +55,13 @@ export default (props) => {
         {(!user.userId && 
           renderLoggedOutText())} 
         <View style={styles.buttonContainer}>
+        {(user.userId &&
           <ActionButton
             style={styles.actionButton}          
             buttonText="Connect App"
             onPress={onConnenctPress}
             secondaryColor
-          />
-          <ActionButton
-            style={styles.actionButton}
-            buttonText="See Permissions"
-            onPress={onAltButtonPress}
-            secondaryColor            
-          />
+          />)}
         </View>
       </View>
     </View>
