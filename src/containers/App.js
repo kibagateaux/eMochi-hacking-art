@@ -10,7 +10,7 @@ import {getLocalStats} from '@actions/stats/getLocalStats';
 import {updateActivitiesList} from '@actions/activities';
 import {updateDays} from '@actions/days';
 
-import {LOGIN, INTEGRATIONS} from '@constants/routes';
+import {LOGIN, INTEGRATIONS, NON_REFERRAL_INTRO} from '@constants/routes';
 
 const mapStateToProps = ({stats, activities, user}) => ({
   lastLiveStats: stats.lastLiveStats,
@@ -24,7 +24,8 @@ const mapDispatchToProps = (dispatch) => ({
   setDisplayStats: (statsMap) => dispatch(setDisplayStats(statsMap)),
   updateLocalStats: (statsMap) => dispatch(updateLocalStats(statsMap)),
   updateActivitiesList: (activities) => dispatch(updateActivitiesList(activities)),
-  updateDays: (days) => dispatch(updateDays(days))
+  updateDays: (days) => dispatch(updateDays(days)),
+  navigateToNonReferralIntro: () => dispatch(navigateTo(NON_REFERRAL_INTRO))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

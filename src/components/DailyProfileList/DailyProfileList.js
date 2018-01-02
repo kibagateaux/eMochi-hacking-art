@@ -32,10 +32,9 @@ export default class extends PureComponent {
       "You must sign in in order to see your pet's activity";
     const mainButtonFunc = userId ? navigateToIntegations : navigateToLogin;
     const mainButtonText = userId ? "CONNECT APPS" : "LOGIN";
-    // const subText;
-    // const subButtonFunc;
-    // const subButtonText; 
-
+    
+    // if !userId then FillerBox
+    // else Integrations SectionList
     return (
       <View style={styles.fillerBoxContainer}>
         <FillerBox
@@ -78,6 +77,9 @@ export default class extends PureComponent {
   _renderDailyProfiles() {
     const {days} = this.props;
     console.log('rend days', days);
+    // all this null checking is handled in render already
+    // and moot because should not have days
+    // filter activities into days using reduce then render
     const profiles = _.isEmpty(days) ? null : // no data, tell them to add to apps or integrate new ones
       _.map(days, ({date, activities, summary}) =>
         _.isEmpty(activities) ? null : // motivational thing or something not null

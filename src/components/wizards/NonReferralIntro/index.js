@@ -14,12 +14,16 @@ import {NAVIGATE_NONREFERRAL_ONBOARDING_PROCESS} from '@constants/analytics';
 // import styles from './styles';
 
 export default (props) => {
+  const onIndexChanged = (i) => props.trackUserBehaviour(
+    NAVIGATE_NONREFERRAL_ONBOARDING_PROCESS,
+    {slide: i, completion: `${((i+1)/5)*100}%`} // index + 1 / total slides * percentage
+  );
   return (
     <Swiper
       showsButtons
       loop={false}
       autoplayTimeout={1}
-      onIndexChanged={(i,e) => props.trackUserBehaviour(NAVIGATE_NONREFERRAL_ONBOARDING_PROCESS, {slide: i, completion: `${((i+1)/5)*100}%`)}
+      onIndexChanged={onIndexChanged}
     >
       <WelcomeScreen 
         overlayImage={require('../../../lib/media/gif/Panda-Blob.gif')}

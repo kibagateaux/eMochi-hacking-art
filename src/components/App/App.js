@@ -16,8 +16,9 @@ export default class App extends Component {
     // branch.subscribe(props.handleBranchRouting);
     this.branchUnsubcription = branch.subscribe(({params, error}) => {
       const url = params['+url'] || params['+non_branch_link'];
-      console.log('deepl link url', params, url);
-      if(params['+non_branch_link']) {
+      console.log('branch link', params, url);
+      if (params['+is_first_session']) {
+        props.navigateToNonReferralIntro();
       }
     });
     const {
