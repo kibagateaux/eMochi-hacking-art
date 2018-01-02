@@ -6,14 +6,16 @@ import {
 } from 'react-native';
 import {Button} from 'react-native-elements';
 import styles from './styles';
+import {NAVIGATE_NONREFERRAL_ONBOARDING_PROCESS} from '@constants/analytics';
 
 export default (props) => {
   const {
     overlayImage,
-    slideText
+    slideText,
+    trackUserBehaviour
   } = props;
   const source = overlayImage || require('../../../lib/media/gif/running-bebo.gif');
-
+  // trackUserBehaviour(NAVIGATE_NONREFERRAL_ONBOARDING_PROCESS, {slideText});
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
@@ -30,12 +32,7 @@ export default (props) => {
       </View>
       <View style={styles.bottomContainer}>
         <Text style={styles.welcomeText}> Welcome </Text>
-        <Text {/* add something to mitigate line length or watevs*/ ...props} 
-          style={styles.slideText}
-        >
-          {slideText}
-        </Text>
-        
+        <Text style={styles.slideText}> {slideText} </Text>
       </View>
     </View>
   );

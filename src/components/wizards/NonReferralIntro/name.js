@@ -11,8 +11,8 @@ import {
   Icon,
 } from 'react-native-elements';
 
+import {SAVE_AVATAR_NAME} from '@constants/analytics';
 import styles from './styles';
-
 export default class extends PureComponent {
   constructor(props) {
     super(props);
@@ -26,9 +26,14 @@ export default class extends PureComponent {
   }
 
   onButtonPress = () => {
-    const {emochiName, nameInput} = this.state
-    this.props.updateUser({emochiName});
+    const {emochiName, nameInput} = this.state;
     console.log('on btn pres', nameInput);
+    if(nameInput) {
+      const {updateUser, trackUserBehaviour} = this.props;
+      console.log('on name input', trackUserBehaviour, {emochiName});
+      trackUserBehaviour(SAVE_AVATAR_NAME, {emochiName});
+      updateUser({emochiName});
+    }
     this.setState({nameInput: !nameInput});
   }
 
