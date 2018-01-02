@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => ({
   updateLocalStats: (statsMap) => dispatch(updateLocalStats(statsMap)),
   updateActivitiesList: (activities) => dispatch(updateActivitiesList(activities)),
   updateDays: (days) => dispatch(updateDays(days)),
-  navigateToNonReferralIntro: () => dispatch(navigateTo(NON_REFERRAL_INTRO))
+  navigateToNonReferralIntro: (data) => dispatch(navigateTo(NON_REFERRAL_INTRO, data))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

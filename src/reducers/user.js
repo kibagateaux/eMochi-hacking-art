@@ -7,10 +7,11 @@ import {
 
 
 INITIAL_STATE = {
-  localMode: true,
+  localMode: false,
   user: null,
   userId: null,
-  anonymousId: null
+  anonymousId: null,
+  emochiName: null
 };
 
 export default (state = INITIAL_STATE, {type, payload}) => {

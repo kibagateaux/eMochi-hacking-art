@@ -94,11 +94,11 @@ export default class SignUp extends React.Component {
           <Text style={styles.errorMessage}>{this.state.errorMessage}</Text>
           
           <FormLabel> 
-            <Icon
+            {/* <Icon
               name="phone" 
               iconStyle={styles.labelIcon}
               containerStyle={styles.labelIcon}
-            /> 
+            />  */}
             Phone Number
           </FormLabel>
           <FormInput
@@ -111,11 +111,11 @@ export default class SignUp extends React.Component {
             onChangeText={phoneNumber => this.setState({phoneNumber})} />
           
           <FormLabel>
-            <Icon
+            {/* <Icon
               name="lock-open" 
               iconStyle={styles.labelIcon}
               containerStyle={styles.labelIcon}
-            /> 
+            /> */}
             New Password
           </FormLabel>
           <FormInput
