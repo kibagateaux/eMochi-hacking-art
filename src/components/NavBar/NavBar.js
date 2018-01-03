@@ -17,18 +17,24 @@ export default (props) => {
   props.navigateToSettings : () => props.navigateBack()
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={leftPress} style={styles.leftIcon}>
-        <Icon
-          name={leftIcon}
-          type="MaterialCommunityIcons"
+      <View style={styles.navBarButtonContainer}>
+        <TouchableOpacity onPress={leftPress} style={styles.leftIcon}>
+          <Icon
+            name={leftIcon}
+            type="MaterialCommunityIcons"
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.navBarTitleContainer}>
+        <Text style={styles.routeName}> eMochi </Text>
+      </View>
+      <View style={styles.navBarButtonContainer}>
+        <Image
+          resizeMode="contain"
+          style={styles.rightIcon}
+          source={require('@media/image/logos/emochiLogo.png')}
         />
-      </TouchableOpacity>
-      <Text style={styles.routeName}> eMochi </Text>
-      <Image
-        resizeMode="contain"
-        style={styles.rightIcon}
-        source={require('@media/image/logos/emochiLogo.png')}
-      />
+      </View>
     </View>
 
   )

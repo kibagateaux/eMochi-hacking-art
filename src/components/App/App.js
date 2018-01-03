@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ScrollView, View, Image} from 'react-native';
+import {View} from 'react-native';
 import axios from 'axios';
 import branch from 'react-native-branch';
 import uuid from 'uuid';
