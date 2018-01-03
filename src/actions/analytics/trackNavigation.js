@@ -4,11 +4,13 @@ import {isEmpty} from 'lodash';
 
 export const trackNavigation = (name, properties) => 
   (dispatch, getStore) => {
-    const {user: {userId, anonymousId}} = getStore();
-    const id = userId ? {userId} : {anonymousId};
-    if(name && !isEmpty((id))) {
-      const eventData = {...id, name, properties};
-      analytics.screen(eventData);
-      Analytics.record(eventData.name, eventData.properties);
+    if(!__DEV__) {
+      const {user: {userId, anonymousId}} = getStore();
+      const id = userId ? {userId} : {anonymousId};
+      if(name && !isEmpty((id))) {
+        const eventData = {...id, name, properties};
+        analytics.screen(eventData);
+        Analytics.record(eventData.name, eventData.properties);
+      }
     }
   }

@@ -72,7 +72,6 @@ export default class Login extends PureComponent {
   }
 
   navigateSignup = () => {
-    console.log('nav sign', this.props);
     const {trackUserBehaviour, navigateToSignup} = this.props;
     trackUserBehaviour("NAVIGATE_TO_SIGNUP_FROM_LOGIN", this.state)
     navigateToSignup();
