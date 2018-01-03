@@ -117,8 +117,7 @@ export default class Login extends PureComponent {
           <FormInput
             inputStyle={styles.inputStyles}
             selectionColor={styles.signInButton.backgroundColor}
-            autoCapitalize="none"
-            underlineColorAndroid="transparent"
+            keyboardType="phone-pad"
             placeholder="212-836-0297"
             returnKeyType="next"
             onChangeText={(phoneNumber) => this.setState({phoneNumber})}
@@ -153,13 +152,6 @@ export default class Login extends PureComponent {
           />
           
           <View style={styles.altActionsContainer}>
-            <Button
-              raised
-              buttonStyle={styles.altButton}
-              containerViewStyle={styles.altButton}
-              onPress={this.navigateHome}
-              title="Forgot Password"
-            />
             <Button
               raised
               buttonStyle={styles.altButton}

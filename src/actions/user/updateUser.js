@@ -4,11 +4,10 @@ import {USER_PROFILE} from '@constants/asyncStorage';
 
 export const updateUser = (payload) => {
   AsyncStorage.getItem(USER_PROFILE).then((res = "{}") => {
-    console.log('update user', res);
     const profile = JSON.parse(res);
     const updatedProfile = {...profile,  ...payload};
     AsyncStorage.setItem(USER_PROFILE, JSON.stringify(updatedProfile));
-  }).catch((error) => console.log("error updatingUser", error));
+  }).catch((error) => error);
   return ({
     type: UPDATE_USER,
     payload

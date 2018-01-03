@@ -14,7 +14,7 @@ import {LOGIN, INTEGRATIONS, NON_REFERRAL_INTRO} from '@constants/routes';
 
 const mapStateToProps = ({stats, activities, user}) => ({
   lastLiveStats: stats.lastLiveStats,
-  localMode : user.localMode,
+  localMode: user.localMode,
   user
 });
 

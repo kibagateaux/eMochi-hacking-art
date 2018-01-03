@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "teset-prod": "react-native run-android --variant=release",
-    "android-prod": "cd android && ./gradlew assembleRelease",
+    "test-prod": "react-native run-android --variant=release",
+    "build-android-prod": "cd android && ./gradlew assembleRelease",
     "test": "jest"
   },
   "dependencies": {
@@ -32,5 +32,6 @@
   "jest": {
     "preset": "react-native"
   },
-  "devDependencies": {}
+  "devDependencies": {
+  }
 }

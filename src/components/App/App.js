@@ -13,30 +13,32 @@ import styles from './styles';
 export default class App extends Component {
   constructor(props){
     super(props);
-    // branch.subscribe(props.handleBranchRouting);
-    this.branchUnsubcription = branch.subscribe(({params, error}) => {
-      const url = params['+url'] || params['+non_branch_link'];
-      console.log('branch link', params, url);
-      console.log('needs intro', params['+is_first_session'] || !props.user.emochiName, params['+is_first_session'], props.user.emochiName);
-      if(params['+is_first_session'] && !props.user.emochiName) {
-        console.log('nav to intro', );
-        props.navigateToNonReferralIntro({params, user: props.user});
-      }
-    });
     const {
-      user: { userId },
+      user: { userId, anonymousId },
       identifyUser,
       updateActivitiesList,
       updateDays
     } = props;
+
+    if(!userId && !anonymousId) {
+      const id = uuid.v4();
+      identifyUser({anonymousId: id});
+    }
+    
+    // branch.subscribe(props.handleBranchRouting);
+    this.branchUnsubcription = branch.subscribe(({params, error}) => {
+      const url = params['+url'] || params['+non_branch_link'];
+      if(params['+is_first_session']) {
+        props.navigateToNonReferralIntro({params, user: props.user});
+      }
+    });
+
     // refreshes user's cloud data on app load
+    // pull metadata table instead
     if(userId) {
       axios.get(`https://og1pdgpgji.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${userId}`)
       .then((res) => {
-        if(!res.data) {
-          // handle error for whatevs
-          console.log("update data failed", res);
-        } else {
+        if(res.data) {
           res.data.map((day) => {
               // This is incorrect for many reasons
               //   - "Days" only exist for moves api call
@@ -47,9 +49,7 @@ export default class App extends Component {
           })
         }
       })
-    .catch((error) => {
-      console.log('error loading moves data', error);
-    })
+    .catch((error) => error)
     }
   }
 

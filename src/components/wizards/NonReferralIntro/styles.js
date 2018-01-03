@@ -35,6 +35,7 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     paddingVertical,
+    backgroundColor: colors.white
   },
   namingMessageContainer: {
     paddingVertical,
