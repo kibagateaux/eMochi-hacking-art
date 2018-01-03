@@ -35,21 +35,23 @@ export default class App extends Component {
 
     // refreshes user's cloud data on app load
     // pull metadata table instead
-    if(userId) {
-      axios.get(`https://og1pdgpgji.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${userId}`)
-      .then((res) => {
-        if(res.data) {
-          res.data.map((day) => {
-              // This is incorrect for many reasons
-              //   - "Days" only exist for moves api call
-              //   - Everything is down to the millisecond so can easily cluster activities with reducer func if needed
-              //   - Doesn't use DynamoDB as single source of truth
-            updateActivitiesList(day.activities);
-            updateDays({[day.date]: day.summary})
-          })
-        }
-      })
-    .catch((error) => error)
+    if(!__DEV__) {
+      if(userId) {
+        axios.get(`https://og1pdgpgji.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${userId}`)
+        .then((res) => {
+          if(res.data) {
+            res.data.map((day) => {
+                // This is incorrect for many reasons
+                //   - "Days" only exist for moves api call
+                //   - Everything is down to the millisecond so can easily cluster activities with reducer func if needed
+                //   - Doesn't use DynamoDB as single source of truth
+              updateActivitiesList(day.activities);
+              updateDays({[day.date]: day.summary})
+            })
+          }
+        })
+      .catch((error) => error)
+      }
     }
   }
 

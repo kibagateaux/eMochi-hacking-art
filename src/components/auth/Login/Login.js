@@ -47,10 +47,8 @@ export default class Login extends PureComponent {
         signInUser({username});
         aliasAnonToUser(anonymousId, username);
         trackUserBehaviour(USER_LOGIN, {
-          username,
+          errorMessage: this.state.errorMessage,
           authenticationFlowType,
-          pool,
-          ...this.state
         });
         nextScreen ? nextScreen(nextScreenProps) : navigateToHome();
       })
