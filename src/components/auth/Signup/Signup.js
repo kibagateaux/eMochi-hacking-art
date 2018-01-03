@@ -3,7 +3,8 @@ import {
   View,
   Text,
   ImageBackground,
-  TouchableOpacity
+  TouchableOpacity,
+  Linking
 } from 'react-native';
 import {
   FormLabel,
@@ -67,7 +68,6 @@ export default class SignUp extends React.Component {
   }
 
   facebookLogin = () => {
-    console.warn ('implement log in with facebook')
     const {trackUserBehaviour} = this.props;
     trackUserBehaviour(FACEBOOK_SIGNUP, this.state)
   }
@@ -82,6 +82,11 @@ export default class SignUp extends React.Component {
     const {trackUserBehaviour, navigateToLogin} = this.props;
     trackUserBehaviour("NAVIGATE_TO_LOGIN_FROM_SIGNUP", this.state)
     navigateToLogin();
+  }
+
+  openPrivacyPolicy() {
+    Linking.openURL("https://www.malikwormsby.com/privacy-policy")
+      .catch((e) => e);
   }
 
   render() {
@@ -163,6 +168,12 @@ export default class SignUp extends React.Component {
             />
           </View>
         </View>
+        <Button
+          containerViewStyle={styles.privacyPolicy}
+          buttonStyle={styles.privacyPolicy}
+          title="Privacy Policy"
+          onPress={this.openPrivacyPolicy}
+        />
       </ImageBackground>
     );
   }

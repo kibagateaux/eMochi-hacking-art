@@ -16,7 +16,7 @@ export default StyleSheet.create({
     top: 0,
     left: 0,
     height: height / 2.1,
-    width: width,    
+    width: width,
     alignSelf: 'center'
   },
   overlayImage: {

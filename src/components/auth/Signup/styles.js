@@ -66,4 +66,10 @@ export default StyleSheet.create({
   divider: {
     marginVertical: itemHeight / 4
   },
+  privacyPolicy: {
+    backgroundColor: colors.primary,
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+  }
 });
