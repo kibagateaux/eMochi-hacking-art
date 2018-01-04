@@ -33,7 +33,6 @@ export default StyleSheet.create({
     paddingRight: width / 36
   },
   inputStyles: {
-    height: itemHeight / 2,
     width: width / 1.5,
   },
   errorMessage: {

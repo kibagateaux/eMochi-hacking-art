@@ -35,6 +35,7 @@ export default class SignUp extends React.Component {
   }
   
    validateFields = () => {
+     console.log('valid', checkPhoneNumberLength);
     const {password, phoneNumber} = this.state;
     const validPassword = password.length > 7;
     const validNumber = checkPhoneNumberLength(phoneNumber);
@@ -52,7 +53,7 @@ export default class SignUp extends React.Component {
   signUpUser(username, password, email, number) {
     Auth.signUp(username, password, email, number)
       .then((user) => {
-        this.props,trackUserBehaviour(USERNAME_SIGNUP, this.state);
+        this.props.trackUserBehaviour(USERNAME_SIGNUP, this.state);
         this.props.navigateToLogin({lastScreen: "Signup"});
       })
       .catch((error) => {

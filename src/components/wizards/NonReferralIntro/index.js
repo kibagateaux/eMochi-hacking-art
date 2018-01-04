@@ -32,7 +32,7 @@ export default (props) => {
       />
       <WelcomeScreen
         overlayImage={require('../../../lib/media/gif/full-growth-timelapse.gif')}
-        slideText={"Take care of it an watch it grow or else it wil start to get weak."}
+        slideText={"Take care of it and watch it grow or else it wil start to get weak."}
         trackUserBehaviour={props.trackUserBehaviour}
       />
       <WelcomeScreen

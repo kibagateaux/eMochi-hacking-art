@@ -145,7 +145,7 @@ export default class Login extends PureComponent {
             containerViewStyle={styles.signInButton}
             buttonStyle={styles.signInButton}
             onPress={this.handleLogInClick}
-            title="SIGN IN"
+            title="LOGIN"
           />
           
           <View style={styles.altActionsContainer}>
