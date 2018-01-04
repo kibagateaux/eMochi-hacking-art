@@ -29,13 +29,12 @@ export default class SignUp extends React.Component {
       password: '',
       email: '',
       phoneNumber: '',
-      errorMessage: 'Sign up with just your phone number and a password',
+      errorMessage: '',
     };
     this.baseState = this.state;
   }
   
    validateFields = () => {
-     console.log('valid', checkPhoneNumberLength);
     const {password, phoneNumber} = this.state;
     const validPassword = password.length > 7;
     const validNumber = checkPhoneNumberLength(phoneNumber);
@@ -43,7 +42,6 @@ export default class SignUp extends React.Component {
     const passwordMessage = validPassword ? '' : ' Passwords must be longer than 8 characters ';
     const errorMessage = numberMessage + passwordMessage;
     if(errorMessage.length > 0) {
-      console.log('err msg', errorMessage);
       this.setState({errorMessage});
     } else {
       this.handleSignUp();
@@ -97,8 +95,7 @@ export default class SignUp extends React.Component {
         source={require("@media/image/goldenField.png")}
       >
         <View style={styles.formContainer}>
-          <Text style={styles.errorMessage}>{this.state.errorMessage}</Text>
-          
+          <Text> Sign up with just your phone number and a password </Text>
           <FormLabel> 
             {/* <Icon
               name="phone" 
@@ -136,6 +133,7 @@ export default class SignUp extends React.Component {
           
           <View style={styles.divider}/>
           
+          <Text style={styles.errorMessage}>{this.state.errorMessage}</Text>
           <Button
             containerViewStyle={styles.signupButton}
             buttonStyle={styles.signupButton}

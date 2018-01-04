@@ -86,7 +86,7 @@ export default class extends PureComponent {
             resizeMode='stretch'
           />
           <Image
-            source={this.props.overlayImage}
+            source={require('../../../lib/media/gif/Panda-Blob.gif')}
             style={styles.overlayImage}
             resizeMode='cover'
           />

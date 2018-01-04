@@ -41,7 +41,6 @@ export default (props) => {
         trackUserBehaviour={props.trackUserBehaviour}
       />
       <NamingScreen
-        overlayImage={require('../../../lib/media/gif/Panda-Blob.gif')}
         updateUser={props.updateUser}
         trackUserBehaviour={props.trackUserBehaviour}
       />
