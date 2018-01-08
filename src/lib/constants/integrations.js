@@ -10,6 +10,7 @@ const categories = {
 };
 export const Moves = { // This is the universal integration format used for <IntegrationList /> and <OAuth />
   appName: MOVES_APP,
+  key: MOVES_APP,
   appLogo: require("@media/image/logos/moves-app-logo.png"),
   description: "A beautifully designed activity monitoring app.",
   category: categories.activityTracking
