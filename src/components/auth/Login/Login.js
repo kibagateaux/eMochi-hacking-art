@@ -33,7 +33,7 @@ export default class Login extends PureComponent {
 
   doLogin(phoneNumber, password) {
     Auth.signIn(phoneNumber, password)
-      .then(async ({username, authenticationFlowType, pool}) => {
+      .then(async ({username, authenticationFlowType}) => {
         this.setState({showActivityIndicator: false})
         const {
           signInUser,
@@ -47,14 +47,13 @@ export default class Login extends PureComponent {
         signInUser({username});
         aliasAnonToUser(anonymousId, username);
         trackUserBehaviour(USER_LOGIN, {
-          errorMessage: this.state.errorMessage,
+          ...this.state,
           authenticationFlowType,
         });
         nextScreen ? nextScreen(nextScreenProps) : navigateToHome();
       })
       .catch((error) => {
-        console.log('error on signin', error);
-        this.setState({errorMessage: "Invalid login - " + error});
+        this.setState({errorMessage: "Invalid login. Please try again, we believe in you!"});
         this.setState({showActivityIndicator: false});
       })
   };
@@ -85,6 +84,7 @@ export default class Login extends PureComponent {
       phoneNumber,
       password
     } = this.state;
+    console.log('render login', );
     return (
       <View style={styles.container}>
         <Modal
@@ -115,7 +115,7 @@ export default class Login extends PureComponent {
             inputStyle={styles.inputStyles}
             selectionColor={styles.signInButton.backgroundColor}
             keyboardType="phone-pad"
-            placeholder="212-836-0297"
+            placeholder="555-555-5555"
             returnKeyType="next"
             onChangeText={(phoneNumber) => this.setState({phoneNumber})}
             value={phoneNumber}

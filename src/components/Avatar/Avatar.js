@@ -15,7 +15,7 @@ const avatarSelector = (activity) => {
     case "transport":       return {type: "gif", src:require("@media/gif/Panda-Blob.gif")};
     case "dancing":         return {type: "gif", src: require("@media/gif/shrinking.gif")}
     case "eating":          return {type: "gif", src: require("@media/gif/eating-apple.gif")}
-    case "idle":             return {type: "gif", src: require("@media/gif/shrinking.gif")};
+    case "idle":            return {type: "gif", src: require("@media/gif/shrinking.gif")};
     case "weight-lifting":  return {type: "video", src: require("@media/mp4/Growing-stronger-arms.mp4")};
     default:                return {type: "gif", src:require("@media/gif/running-bebo.gif")};
   }
@@ -32,13 +32,11 @@ export default (props) => {
   const medium = avatarSelector(activity);
 
   // Avatar layering Schema top -> down
-  // switch mode + settings buttons
-  // item
+  // item for activity
   // avatar  // https://github.com/react-native-community/react-native-video
   // environment
 
 
-  // TODO: Add analytics to button presses
   return (
     <View style={styles.container}>
       <Text style={styles.avatarName}> {emochiName || "eMochi"} </Text>

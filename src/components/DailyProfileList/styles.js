@@ -4,7 +4,7 @@ const {height, width} = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   headerMessageContainer: {
     marginBottom: height / 36

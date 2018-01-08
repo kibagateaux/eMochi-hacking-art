@@ -6,10 +6,10 @@ export default {
   container: {
     flex: 1,
     backgroundColor: colors.secondary,
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignSelf: "center",
     alignItems: "center",
-    paddingVertical: height / 50
+    paddingVertical: height / 20
   },
   centerText: {
     textAlign: "center",
@@ -32,7 +32,9 @@ export default {
       ...this.button,
       width: width / 3,
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      paddingVertical: height / 50,
+      marginTop: height / 50
     })
   },
   mainButtonText: {

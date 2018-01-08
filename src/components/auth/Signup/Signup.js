@@ -48,18 +48,18 @@ export default class SignUp extends React.Component {
     }
   };
 
-  signUpUser(username, password, email, number) {
+  signUpUser(username, password, email, number){
     Auth.signUp(username, password, email, number)
       .then((user) => {
         this.props.trackUserBehaviour(USERNAME_SIGNUP, this.state);
-        this.props.navigateToLogin({lastScreen: "Signup"});
+        this.props.navigateToLogin({type: 'reset'});
       })
       .catch((error) => {
         this.setState({errorMessage: error.message});
       })
   }
 
-  handleSignUp = async () => {
+  handleSignUp = () => {
     this.setState({errorMessage: ''});
     const {password, phoneNumber} = this.state;
     const awsPhoneNumber = '+1' + phoneNumber;

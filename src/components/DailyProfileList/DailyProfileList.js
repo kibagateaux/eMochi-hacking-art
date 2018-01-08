@@ -47,7 +47,7 @@ export default class extends PureComponent {
             <View style={styles.headerMessageContainer}>
               <Text style={styles.headerMessageText}> No data available, connect some apps </Text>
               <Text style={styles.headerMessageText}> to train 
-                {(emochiName && <Text style={styles.emochiName}> {emochiName} </Text>) || "your pet"}
+                {(emochiName && <Text style={styles.emochiName}> {emochiName} </Text>) || "your pet"} 
                 with your activity
               </Text>
             </View>
@@ -117,7 +117,7 @@ export default class extends PureComponent {
       activities: {activities},
     } = this.props;
     return (
-      <ScrollView> 
+      <ScrollView style={styles.container}> 
         {(_.isEmpty(activities) 
           // || !userId
         ) ? this._renderFillerBox() : this._renderDailyProfiles()}

@@ -26,6 +26,7 @@ export default (props) => {
   return (
     <View style={styles.container}>
       {(mainText && <Text style={styles.mainText}> {mainText} </Text>)}
+      {(subText && <Text style={styles.subText}> {subText} </Text>)}
       {(mainButtonFunc &&
         (<TouchableOpacity
           onPress={mainButtonFunc}
@@ -34,7 +35,6 @@ export default (props) => {
           <Text style={styles.centerText}>{mainButtonText} </Text>
         </TouchableOpacity>)
       )}
-      {(subText && <Text style={styles.subText}> {subText} </Text>)}
       {(subButtonFunc && 
         (<TouchableOpacity
           onPress={subButtonFunc}
