@@ -5,6 +5,7 @@ import {USER_PROFILE, IS_LOGGED_IN} from '@constants/asyncStorage';
 import {SIGN_IN_USER} from '@actions/actionNames';
 
 export const signInUser = (userInfo) => {
+  // add actual isgn in code here from login screen
   AsyncStorage.setItem(IS_LOGGED_IN, JSON.stringify("true"));
   AsyncStorage.setItem(USER_PROFILE, JSON.stringify(userInfo));
   return {

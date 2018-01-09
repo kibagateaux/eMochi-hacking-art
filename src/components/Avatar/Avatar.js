@@ -16,7 +16,6 @@ const avatarSelector = (activity) => {
     case "dancing":         return {type: "gif", src: require("@media/gif/shrinking.gif")}
     case "eating":          return {type: "gif", src: require("@media/gif/eating-apple.gif")}
     case "idle":            return {type: "gif", src: require("@media/gif/shrinking.gif")};
-    case "weight-lifting":  return {type: "video", src: require("@media/mp4/Growing-stronger-arms.mp4")};
     default:                return {type: "gif", src:require("@media/gif/running-bebo.gif")};
   }
 };

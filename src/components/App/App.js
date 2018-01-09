@@ -37,7 +37,7 @@ export default class App extends Component {
     // pull metadata table instead
     if(!__DEV__) {
       if(userId) {
-        axios.get(`https://og1pdgpgji.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${userId}`)
+        axios.get(`https://z7udwcips0.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${userId}`)
         .then((res) => {
           if(res.data) {
             res.data.map((day) => {

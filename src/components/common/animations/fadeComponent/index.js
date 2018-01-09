@@ -16,7 +16,6 @@ export default class FadingView extends Component {
    */
   constructor(props) {
     super(props);
-    console.log('fade comp const', props);
     this.state = {
       opacity: new Animated.Value(0)
     };
@@ -41,7 +40,6 @@ export default class FadingView extends Component {
    */
   fadeInAnimation = () => {
     const {duration, toOpacity, fadeInDelay} = this.props;
-    console.log('fad in', toOpacity, duration, fadeInDelay);
     return Animated.timing(
       this.state.opacity,
       {
@@ -60,7 +58,6 @@ export default class FadingView extends Component {
    */
   fadeOutAnimation = () => {
     const {duration, fadeOutDelay} = this.props;
-    console.log('fad out', duration, fadeOutDelay);
     return Animated.timing(
       this.state.opacity,
       {

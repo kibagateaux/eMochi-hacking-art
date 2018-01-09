@@ -11,7 +11,6 @@ import {
 } from '@lib/constants/routes';
 import userActions from '@actions/user/';
 
-console.log('set cont', userActions);
 mapStateToProps = (state) => {
   return {
 

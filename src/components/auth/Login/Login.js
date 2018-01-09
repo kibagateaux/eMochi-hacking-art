@@ -84,7 +84,6 @@ export default class Login extends PureComponent {
       phoneNumber,
       password
     } = this.state;
-    console.log('render login', );
     return (
       <View style={styles.container}>
         <Modal

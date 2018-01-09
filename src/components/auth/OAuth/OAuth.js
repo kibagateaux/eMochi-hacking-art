@@ -19,7 +19,6 @@ export default (props) => {
     initIntegrationAuth
   } = props;
 
-  console.log('oauth', props);
   const renderLoggedOutText = () => (
     <View style={styles.loggedOutTextContainer}>
       <Text style={styles.loggedOutText}> 

@@ -88,7 +88,6 @@ export default class extends PureComponent {
 
   _renderDailyProfiles() {
     const {days} = this.props;
-    console.log('rend days', days);
     // all this null checking is handled in render already
     // and moot because should not have days
     // filter activities into days using reduce then render
