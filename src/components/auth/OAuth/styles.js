@@ -7,7 +7,8 @@ export default StyleSheet.create({
     flex: 1,
     height: height / 1.16,
     flexDirection: 'column',
-    // justifyContent: 'space-between',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   header: {
     height: height / 3,
@@ -17,23 +18,30 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   appLogo: {
-    height: height / 6,
-    width: height / 6
+    flex: 1,
+    paddingHorizontal: width / 32,
+    paddingVertical: height / 64,
+    width: width
+  },
+  textContainer: {
+    paddingVertical: height / 32,
+    alignItems: 'center'
   },
   appName: {
     fontSize: font.size.large,
     color: colors.black,
+    fontWeight: font.weight.bold
   },
   description: {
     color: colors.black,
     fontSize: font.size.normal,
-    zIndex: 3,      
   },
   loggedOutText: {
     textAlign: 'center',
   },
   loginButton: {
     width: width / 3,
+    height: height / 10,
     alignItems: 'center',
     alignSelf: 'center',
     margin: 20

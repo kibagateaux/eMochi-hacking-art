@@ -44,21 +44,24 @@ export default (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image source={appLogo} style={styles.appLogo}/>
-        <Text style={styles.appName}> {appName} </Text>
-        <Text style={styles.description}> {description} </Text>
+        <Image source={appLogo} style={styles.appLogo}
+          resizeMode="contain" resizeMethod="resize"/>
+        <View style={styles.textContainer}>
+          <Text style={styles.appName}> {appName} </Text>
+          <Text style={styles.description}> {description} </Text>
+        </View>
       </View>
       {(!user.userId && 
         renderLoggedOutText())} 
       <View style={styles.buttonContainer}>
       {(user.userId && 
-        <Text> Make sure you have {appName} downloaded before connecting </Text> &&
+        (<Text> Make sure you have {appName} downloaded before connecting </Text> &&
         <ActionButton
           style={styles.actionButton}          
           buttonText="Connect App"
           onPress={onConnectPress}
           secondaryColor
-        />)}
+        />))}
       </View>
     </View>
   );
