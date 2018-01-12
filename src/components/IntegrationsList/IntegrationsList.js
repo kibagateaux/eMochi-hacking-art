@@ -36,7 +36,7 @@ export default class extends Component {
         <Image
           resizeMode="contain"
           style={styles.sectionItemLogo}
-          source={item.appLogo}
+          source={item.appIcon}
         />
         <Text style={styles.sectionItemLabel}> {item.appName || null} </Text>
       </TouchableOpacity>
@@ -53,6 +53,7 @@ export default class extends Component {
       return {...sections, [item.category]: category}
     }, {});
     const sections = Object.keys(sectionMap).map((i) => sectionMap[i]);
+    // FIXME: Section items should be flex: row not column
     return (
       <SectionList
         contentContainerStyle={styles.sectionListContainer}

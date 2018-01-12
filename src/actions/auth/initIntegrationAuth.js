@@ -7,6 +7,7 @@ import {INTEGRATION_REQUESTS, USER_PROFILE} from '@constants/asyncStorage';
 import {integrationAuthCalls} from '@constants/integrations';
 
 export const initIntegrationAuth = (serviceName) => async (dispatch) => {
+  console.log('init auth', serviceName);
   const user = JSON.parse(await AsyncStorage.getItem(USER_PROFILE));
   if(integrationAuthCalls[serviceName] && user) {
     const requestId = uuid.v4();
@@ -17,6 +18,7 @@ export const initIntegrationAuth = (serviceName) => async (dispatch) => {
     dispatch(updateIntegrationRequestIds(updatedRequstIds));
     const authUrl = integrationAuthCalls[serviceName]; // authUrl should always be a Lambda call
     const authUrlWithParams = authUrl  + `&state=${'requestId='+requestId+'+userId='+user.username}`;
+    console.log('auth url', authUrlWithParams);
     const canOpen = await Linking.canOpenURL(authUrlWithParams)  // axios.get then open response link
     const response = canOpen ? 
       Linking.openURL(authUrlWithParams)

@@ -9,7 +9,7 @@ import {
 INITIAL_STATE = {
   localMode: false,
   user: null,
-  userId: null,
+  userId: "3472418464",
   anonymousId: null,
   emochiName: null
 };
