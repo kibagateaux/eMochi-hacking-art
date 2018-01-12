@@ -23,7 +23,7 @@ export const Fitbit = {
   key: FITBIT,
   appLogo: require("@media/image/logos/fitbit_logo.png"),
   appIcon: require("@media/image/logos/fitbit_icon.png"),
-  description: "A beautifully designed activity monitoring app.",
+  description: "The most popular wearables device in the world",
   category: categories.activityTracking
 }
 export default [
