@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Image, TouchableOpacity, Text} from 'react-native';
 // import Video from 'react-native-video';
-
+import ActivityCircle from '../ActivityCircle/ActivityCircle';
 import Icon from 'react-native-vector-icons/Feather';
 import styles from './styles';
 
@@ -38,19 +38,21 @@ export default (props) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.avatarName}> {emochiName || "eMochi"} </Text>
-      {(medium.type === "video") ?
-        null
-        // <Video
-        //   source={medium.src}
-        //   style={styles.avatar}
-        // /> 
-        :
-        <Image
-          source={medium.src}
-          style={styles.avatar} 
-          resizeMode="contain"
-        />}
+      <Text style={styles.avatarName}> {emochiName || "BoBo DeBois"} </Text>
+      <ActivityCircle style={styles.activityCircle}>
+        {(medium.type === "video") ?
+          null
+          // <Video
+          //   source={medium.src}
+          //   style={styles.avatar}
+          // /> 
+          :
+          <Image
+            source={medium.src}
+            style={styles.avatar} 
+            resizeMode="contain"
+          />}
+        </ActivityCircle>
     </View>
   );
 }

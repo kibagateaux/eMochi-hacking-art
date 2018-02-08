@@ -68,6 +68,7 @@ export default StyleSheet.create({
   privacyPolicy: {
     backgroundColor: colors.primary,
     position: 'absolute',
+    flex: 1,
     bottom: 0,
     right: 0,
   }

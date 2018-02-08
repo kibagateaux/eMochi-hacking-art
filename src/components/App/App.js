@@ -7,6 +7,7 @@ import uuid from 'uuid';
 import HomeProfile from '@containers/HomeProfile';
 import LocalGame from '@containers/LocalGame';
 import DailyProfileList from '@containers/DailyProfileList';
+import DailyOverviewList from '..//DailyOverviewList/DailyOverviewList';
 
 import styles from './styles';
 
@@ -35,7 +36,7 @@ export default class App extends Component {
 
     // refreshes user's cloud data on app load
     // pull metadata table instead
-    if(!__DEV__) {
+    // if(!__DEV__) {
       if(userId) {
         axios.get(`https://z7udwcips0.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${userId}`)
         .then((res) => {
@@ -52,7 +53,7 @@ export default class App extends Component {
         })
       .catch((error) => error)
       }
-    }
+    // }
   }
 
   // Updates data and initializes UI for default game mode
@@ -79,7 +80,7 @@ export default class App extends Component {
   _renderLowerPanel = () =>
     this.props.localMode ?
       <LocalGame /> :
-      <DailyProfileList />;
+      <DailyOverviewList />;
   
   render() {
     return (

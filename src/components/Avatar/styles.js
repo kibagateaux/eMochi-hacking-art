@@ -6,12 +6,16 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    justifyContent: 'space-around'
+    justifyContent: 'center'
+  },
+  activityCircle: {
+    flex: 1,
+    width: width
   },
   avatar: {
     width: height / 3,
     height: height / 3,
-    alignSelf: "center",
+    alignSelf: "center"
   },
   iconContainer: {
     flexDirection: "row",

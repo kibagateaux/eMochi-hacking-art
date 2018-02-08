@@ -45,9 +45,9 @@ export default class extends PureComponent {
         {userId && (
           <View stlye={{flex: 1}}>
             <View style={styles.headerMessageContainer}>
-              <Text style={styles.headerMessageText}> No data available, connect some apps </Text>
+              <Text style={styles.headerMessageText}> No data available, connect apps </Text>
               <Text style={styles.headerMessageText}> to train 
-                {(emochiName && <Text style={styles.emochiName}> {emochiName} </Text>) || "your pet"} 
+                {(emochiName && <Text style={styles.emochiName}> {emochiName} </Text>) || " your pet "}
                 with your activity
               </Text>
             </View>

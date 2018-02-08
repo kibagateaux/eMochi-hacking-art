@@ -5,4 +5,5 @@ import reducers from '../reducers';
 // import {branchRoutingMiddleware} from './middleware';
 const storeMiddleware = applyMiddleware(reduxThunk, reduxLogger)(createStore);
 const store = storeMiddleware(reducers);
+console.log('store', store);
 export default store;
