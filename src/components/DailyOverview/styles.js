@@ -1,4 +1,5 @@
 import {Dimensions, StyleSheet} from 'react-native';
+import {font} from '@constants/style';
 const {height, width} = Dimensions.get('window');
 
 export default StyleSheet.create({
@@ -32,12 +33,16 @@ export default StyleSheet.create({
     alignItems: 'center',
     padding: width / 48
   },
-  date: {
+  dateContainer: {
     width: width / 4,
     height: width / 4,
     justifyContent: 'space-around',
     alignItems: 'center',
     flexDirection: 'column',
+  },
+  dateText: {
+    fontSize: font.size.medium,
+    fontWeight: font.weight.bold
   },
   iconGif: {
     height: height / 6,

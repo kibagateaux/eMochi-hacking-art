@@ -4,21 +4,18 @@ import {
   Text,
 } from 'react-native'
 import styles from './styles';
-import DailyOverview from '../DailyOverview/DailyOverview';
+import DailyOverview from '@containers/DailyOverview';
 
 export default (props) => {
   const {days} = props;
-  const dayOverview = days ? days.map((day) => {
-    console.log('day', day);
-    return <DailyOverview key={day.date} date={day.date} />
+  const dayOverviews = days ? Object.keys(days).map((date) => {
+    console.log('day', date);
+    return <DailyOverview key={date} date={date} />
   }) : [];
   
   return (
     <ScrollView style={styles.container}>
-      <DailyOverview />
-      <DailyOverview />
-      <DailyOverview />
-      <DailyOverview />
+      {dayOverviews}
     </ScrollView>
   )
 }

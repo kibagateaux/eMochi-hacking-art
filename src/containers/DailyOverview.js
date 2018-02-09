@@ -2,7 +2,7 @@ import DailyOverview from '@components/DailyOverview/DailyOverview';
 import {connect} from 'react-redux';
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = ({days}) => ({
   days
 });
 
@@ -10,4 +10,4 @@ const mapDispatchToProps = (dispatch) => ({
   
 });
 
-export default connect(mapDispatchToProps, null)(DailyOverview)
+export default connect(mapStateToProps, null)(DailyOverview)

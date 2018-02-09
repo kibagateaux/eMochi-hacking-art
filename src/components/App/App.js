@@ -39,8 +39,7 @@ export default class App extends Component {
       }
     });
 
-    const parse = parseListIntoDays(sampleActivitiesData);
-    console.log('parse', parse);
+    const parse = parseListIntoDays(sampleActivitiesData, "activities");
     props.updateDays(parse);
 
     // refreshes user's cloud data on app load

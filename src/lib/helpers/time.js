@@ -22,7 +22,7 @@ export const _sortArrByTime = (arr) => arr ?
 export const _getFirstMSInDay = (timeMS) =>
   // First MS at GMT not local time - add second param localRegion or moment prob has way
   // coerce timeMS to first MS of that day 00:00 and return MS value
-  moment(moment(timeMS).format("YYYY-MM-DD 00:00:00.000")).valueOf();
+  moment(moment(timeMS).format("YYYY-MM-DD 00:00:00.000")).format('x');
 
 export const _getFirstActivityInDay = (time, obj) => {
   const startTime = _getFirstMSInDay(time);
@@ -75,15 +75,15 @@ export const getDayofWeekDateFromTimestamp = ts =>
   _.isFinite(ts) ? moment(ts).format('L') : null;
 
 
-export const parseListIntoDays = (list) => {
+export const parseListIntoDays = (list, resource) => {
   if(_.isArray(list)) {
     return list.reduce((days, item) => {
       if(_.isObject(item)) {
         const time = item.startTime || item.time; // palindrome :/ , anagram :D
         const date = _getFirstMSInDay(time);
-        const day = days[date] || [];
-        return {...days, [date]: [...day, item]};
+        const day = (days[date] || {})[resource] || {};
+        return {...days, [date]: {[resource || "summary"]: [...day, item]}};
       }
     }, {})
   }
-}
+};

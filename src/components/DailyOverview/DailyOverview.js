@@ -10,7 +10,7 @@ import moment from 'moment';
 import ActivityCircle from '../ActivityCircle/ActivityCircle';
 import ActivityIcon from '../ActivityIcon/ActivityIcon';
 
-import {summarizeActivities} from '@lib/helpers/activities';
+import {summarizeActivityTypes} from '@lib/helpers/activities';
 import {colors} from '@constants/style';
 import styles from './styles';
 
@@ -18,20 +18,19 @@ import styles from './styles';
 export default (props) => {
   const {
     date,
-    activities,
+    days,
     yesterdayResultantAvatar
   } = props;
 
-  const dayActivities = activities ? activities.filter((act) => {
-    // take act start time
-    // use moment to see if it falls within date
-  }, []) : [];
-
-  const activitiesSummary = summarizeActivities(dayActivities);
+  const dayActivities = days[date] ? days[date].activities || []: []
+  
+  
+  console.log('props', props, dayActivities);
+  const activitiesSummary = summarizeActivityTypes(dayActivities);
   // once Activity Circle API is figured out use act summary to make colors stuff
-
-  const formattedDate = date ?
-    moment(date).format("MMM Do").split(' ') :
+  console.log('act types', Object.keys(activitiesSummary), Object.keys(activitiesSummary).length);
+  const formattedDate = Number(date) ?
+    moment.unix(date / 1000).format("MMM Do").split(' ') :
     ["NO", "DATE"];
   const todayResultantAvatar = null; // some calculation on dayAcivities to see how much work you did
 
@@ -39,9 +38,9 @@ export default (props) => {
     <View style={styles.container}>
       <View style={styles.dateContainer}>
         <ActivityCircle>
-          <View style={styles.date}>
-            <Text>{formattedDate[0]}</Text>
-            <Text>{formattedDate[1]}</Text>
+          <View style={styles.dateContainer}>
+            <Text style={styles.dateText}>{formattedDate[0]}</Text>
+            <Text style={styles.dateText}>{formattedDate[1]}</Text>
           </View>
         </ActivityCircle>
       </View>
