@@ -1,7 +1,6 @@
 /* Activities */
 export const SET_AVATAR_ACTIVITY = 'SET_AVATAR_ACTIVITY';
 export const SET_ACTIVE_ACTIVITY = 'SET_ACTIVE_ACTIVITY';
-export const SET_ACTIVE_SEGMENT = 'SET_ACTIVE_SEGMENT';
 export const UPDATE_ACTIVITIES_LIST = 'UPDATE_ACTIVITIES_LIST';
 
 /* Analytics */

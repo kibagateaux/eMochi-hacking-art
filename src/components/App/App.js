@@ -7,7 +7,7 @@ import uuid from 'uuid';
 import HomeProfile from '@containers/HomeProfile';
 import LocalGame from '@containers/LocalGame';
 import DailyTimelineList from '@containers/DailyTimelineList';
-import DailyOverviewList from '..//DailyOverviewList/DailyOverviewList';
+import DailyOverviewList from '@containers/DailyOverviewList';
 import Article from '@components/modals/Article/ArticleModal';
 
 import styles from './styles';
