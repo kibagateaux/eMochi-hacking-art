@@ -3,7 +3,7 @@ import {ScrollView, View, Text} from 'react-native';
 import {Icon} from 'react-native-elements';
 import _ from 'lodash';
 
-import DailyProfile from '@containers/DailyProfile';
+import DailyTimeline from '@containers/DailyTimeline';
 import FillerBox from '@components/common/FillerBox/FillerBox'; 
 import IntegrationsList from '@containers/IntegrationsList';
 
@@ -94,7 +94,7 @@ export default class extends PureComponent {
     const profiles = _.isEmpty(days) ? null : // no data, tell them to add to apps or integrate new ones
       _.map(days, ({date, activities, summary}) =>
         _.isEmpty(activities) ? null : // motivational thing or something not null
-          (<DailyProfile 
+          (<DailyTimeline
               key={date}
               date={date}
               daysActivities={activities}

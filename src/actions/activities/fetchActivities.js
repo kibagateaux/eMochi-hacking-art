@@ -1,9 +1,13 @@
 import AWS from 'aws-sdk';
-import {FETCH_ACTIVITIES} from '@actions/actionNames';
-import {DYNAMO_TABLES, CONFIG} from '@constants/AWS';
-import {updateActivitiesList} from '@actions/activities/updateActivitiesList';
 import moment from 'moment';
 import {flatten, isEmpty} from 'lodash';
+
+import {FETCH_ACTIVITIES} from '@actions/actionNames';
+import {DYNAMO_TABLES, CONFIG} from '@constants/AWS';
+
+import {updateActivitiesList} from '@actions/activities';
+import {updateDays} from '@actions/days';
+import parseListIntoDays from '@helpers/time';
 
 
 const DB = new AWS.DynamoDB.DocumentClient(CONFIG);
@@ -30,9 +34,10 @@ export const fetchActivities = (earliestTime, latestTime) => (dispatch, getStore
     console.log('get acts', error, result);
     if(!error && result) {
       const allActs = isEmpty(result.Items) ? [] : flatten(result.Items);
-      console.log('flat acts', allActs);
-      allActs.map((act) => console.log(act))
       dispatch(updateActivitiesList(allActs));
+      const parsedActs = parseListIntoDays(allActs);
+      console.log('parse act into days', parsedActs);
+      dispatch(updateDays(parsedActs));
     }
   });
 }

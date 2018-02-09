@@ -6,11 +6,15 @@ import uuid from 'uuid';
 
 import HomeProfile from '@containers/HomeProfile';
 import LocalGame from '@containers/LocalGame';
-import DailyProfileList from '@containers/DailyProfileList';
+import DailyTimelineList from '@containers/DailyTimelineList';
 import DailyOverviewList from '..//DailyOverviewList/DailyOverviewList';
 import Article from '@components/modals/Article/ArticleModal';
 
 import styles from './styles';
+
+import sampleActs from '@lib/sampleActivitiesData';
+import {parseListIntoDays} from '@helpers/time';
+import sampleActivitiesData from '../../lib/sampleActivitiesData';
 
 export default class App extends Component {
   constructor(props){
@@ -34,6 +38,10 @@ export default class App extends Component {
         props.navigateToNonReferralIntro({params, user: props.user});
       }
     });
+
+    const parse = parseListIntoDays(sampleActivitiesData);
+    console.log('parse', parse);
+    props.updateDays(parse);
 
     // refreshes user's cloud data on app load
     // pull metadata table instead

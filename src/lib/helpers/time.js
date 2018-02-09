@@ -73,3 +73,17 @@ export const getDayOfWeekNameFromTimestamp = (ts) =>
 
 export const getDayofWeekDateFromTimestamp = ts =>
   _.isFinite(ts) ? moment(ts).format('L') : null;
+
+
+export const parseListIntoDays = (list) => {
+  if(_.isArray(list)) {
+    return list.reduce((days, item) => {
+      if(_.isObject(item)) {
+        const time = item.startTime || item.time; // palindrome :/ , anagram :D
+        const date = _getFirstMSInDay(time);
+        const day = days[date] || [];
+        return {...days, [date]: [...day, item]};
+      }
+    }, {})
+  }
+}

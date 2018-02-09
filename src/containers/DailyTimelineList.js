@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import DailyProfileList from '@components/DailyProfileList/DailyProfileList';
+import DailyTimelineList from '@components/DailyTimelineList/DailyTimelineList';
 
 import {fetchActivities} from "@actions/activities";
 import {navigateTo} from '@actions/navigation';
@@ -22,4 +22,4 @@ const mapDispatchToProps = (dispatch) => ({
   navigateToIntegrations: () => dispatch(navigateTo(INTEGRATIONS))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DailyProfileList);
+export default connect(mapStateToProps, mapDispatchToProps)(DailyTimelineList);

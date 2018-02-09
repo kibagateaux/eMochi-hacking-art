@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import DailyProfile from '@components/DailyProfile/DailyProfile';
+import DailyTimeline from '@components/DailyTimeline/DailyTimeline';
 
 import {setDisplayStats} from '@actions/stats';
 import {setActiveActivity, setActiveSegment} from '@actions/activities';
@@ -25,4 +25,4 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchActivities(userId)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(DailyProfile); 
+export default connect(mapStateToProps, mapDispatchToProps)(DailyTimeline); 
