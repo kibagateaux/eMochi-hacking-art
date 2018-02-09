@@ -7,6 +7,7 @@ export default StyleSheet.create({
     width: width,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginVertical: height / 32
   },
   rightContainer: {
     flex: 3,
@@ -39,7 +40,13 @@ export default StyleSheet.create({
     flexDirection: 'column',
   },
   iconGif: {
-    height: height / 12,
-    width: height / 12
+    height: height / 6,
+    width: height / 6
+  },
+  iconContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
   }
 });

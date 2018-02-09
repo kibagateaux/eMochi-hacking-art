@@ -17,11 +17,18 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
   },
+  logoContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginVertical: height / 32
+  },
   appLogo: {
     flex: 1,
-    paddingHorizontal: width / 32,
-    paddingVertical: height / 64,
-    width: width
+    // paddingHorizontal: width / 32,
+    // paddingVertical: height / 64,
+    // width: width
+    
   },
   textContainer: {
     paddingVertical: height / 32,

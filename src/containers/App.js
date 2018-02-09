@@ -7,6 +7,7 @@ import {
 import {identifyUser} from '@actions/analytics/identifyUser';
 import {navigateTo} from '@actions/navigation/navigateTo';
 import {getLocalStats} from '@actions/stats/getLocalStats';
+import {fetchActivities} from '@actions/activities';
 import {updateActivitiesList} from '@actions/activities';
 import {updateDays} from '@actions/days';
 
@@ -23,6 +24,7 @@ const mapDispatchToProps = (dispatch) => ({
   getLocalStats: () => dispatch(getLocalStats()),
   setDisplayStats: (statsMap) => dispatch(setDisplayStats(statsMap)),
   updateLocalStats: (statsMap) => dispatch(updateLocalStats(statsMap)),
+  fetchActivities: (count) => dispatch(fetchActivities(count)),
   updateActivitiesList: (activities) => dispatch(updateActivitiesList(activities)),
   updateDays: (days) => dispatch(updateDays(days)),
   navigateToNonReferralIntro: (data) => dispatch(navigateTo(NON_REFERRAL_INTRO, data))

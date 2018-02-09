@@ -6,6 +6,7 @@ export const fetchActivities = (userId) => (dispatch) => {
   const queryParams = {
     RequestItems: {
       [tableNames.activities]: {
+        ProjectionExpression: "activity,calories,startTime,endTime",
         Keys: {userId}
       }
     }

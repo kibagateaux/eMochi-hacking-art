@@ -8,6 +8,7 @@ import HomeProfile from '@containers/HomeProfile';
 import LocalGame from '@containers/LocalGame';
 import DailyProfileList from '@containers/DailyProfileList';
 import DailyOverviewList from '..//DailyOverviewList/DailyOverviewList';
+import Article from '@components/modals/Article/ArticleModal';
 
 import styles from './styles';
 
@@ -38,20 +39,23 @@ export default class App extends Component {
     // pull metadata table instead
     // if(!__DEV__) {
       if(userId) {
-        axios.get(`https://z7udwcips0.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${userId}`)
-        .then((res) => {
-          if(res.data) {
-            res.data.map((day) => {
-                // This is incorrect for many reasons
-                //   - "Days" only exist for moves api call
-                //   - Everything is down to the millisecond so can easily cluster activities with reducer func if needed
-                //   - Doesn't use DynamoDB as single source of truth
-              updateActivitiesList(day.activities);
-              updateDays({[day.date]: day.summary})
-            })
-          }
-        })
-      .catch((error) => error)
+
+      //   axios.get(`https://z7udwcips0.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${userId}`)
+      //   .then((res) => {
+      //     console.log('res', res);
+            // props.fetchActivities(); // pull from dynamo instead of recieving from API
+      //     if(res.data) {
+      //       res.data.map((day) => {
+      //           // This is incorrect for many reasons
+      //           //   - "Days" only exist for moves api call
+      //           //   - Everything is down to the millisecond so can easily cluster activities with reducer func if needed
+      //           //   - Doesn't use DynamoDB as single source of truth
+      //         updateActivitiesList(day.activities);
+      //         updateDays({[day.date]: day.summary})
+      //       })
+      //     }
+      //   })
+      // .catch((error) => error)
       }
     // }
   }
@@ -87,6 +91,7 @@ export default class App extends Component {
       <View style={styles.container}> 
         <HomeProfile />
         {this._renderLowerPanel()}
+        {/* <Article /> */}
       </View>
     )
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, Image} from 'react-native';
 import ActionButton from '@components/common/ActionButton/ActionButton';
+import {Button} from 'react-native-elements';
 import styles from './styles';
 import {CONNECT_THIRD_PARTY_APP} from '@constants/analytics';
 
@@ -44,8 +45,13 @@ export default (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image source={appLogo} style={styles.appLogo}
-          resizeMode="contain" resizeMethod="resize"/>
+        <View style={styles.logoContainer}> 
+          <Image source={require('@media/image/logos/emochiLogo.png')} style={styles.appLogo}
+            resizeMode="contain" resizeMethod="resize"/>
+            <Text> {"<---------->"} </Text>
+          <Image source={appLogo} style={styles.appLogo}
+            resizeMode="contain" resizeMethod="resize"/>
+        </View>
         <View style={styles.textContainer}>
           <Text style={styles.appName}> {appName} </Text>
           <Text style={styles.description}> {description} </Text>
@@ -56,8 +62,9 @@ export default (props) => {
       <View style={styles.buttonContainer}>
       {(user.userId && 
         (<Text> Make sure you have {appName} downloaded before connecting </Text> &&
-        <ActionButton
-          style={styles.actionButton}          
+        <Button
+          buttonStyle={styles.actionButton}          
+          containerStyle={styles.actionButton}          
           buttonText="Connect App"
           onPress={onConnectPress}
           secondaryColor
