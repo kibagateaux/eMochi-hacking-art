@@ -15,7 +15,7 @@ export default ({activity, count, metric}) => (
 
 const getIconNameForActivity = (activity) => {
   switch(activity) {
-    case "walking": return "call-to-action";
+    case "walking": return "walk";
     case "running": return "fitness-center";
     case "idle": return "sitting";
     case "transporting": return "train";

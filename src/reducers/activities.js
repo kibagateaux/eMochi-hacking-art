@@ -4,9 +4,10 @@ import {
   SET_AVATAR_ACTIVITY,
   UPDATE_ACTIVITIES_LIST
 } from '@actions/actionNames';
+import sampleActs from '@lib/sampleActivitiesData';
 
 const INITIAL_STATE = {
-  activities: {},
+  activities: __DEV__ && sampleActs || [],
   activeActivity: {},
   avatarActivity: ''
 };
@@ -14,18 +15,16 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, {type, payload}) => {
   switch(type){
     case SET_ACTIVE_ACTIVITY: {
-      const activeActivity = state.activities[payload];
       return {
         ...state,
-        activeActivity,
-        avatarActivity: activeActivity.activity
+        activeActivity: payload,
+        avatarActivity: payload.activity
       };
     }
     case SET_AVATAR_ACTIVITY:
       return {...state, avatarActivity: payload}
-      case UPDATE_ACTIVITIES_LIST: 
-      // fuck this object timestamp shit, just make an array. Individual activities are not so important that the api should be based around accessing them
-      return {...state, activities: {...state.activities, ...payload}}; 
+    case UPDATE_ACTIVITIES_LIST: 
+      return {...state, activities: [...payload]}; 
     default: return state;
   }
 };

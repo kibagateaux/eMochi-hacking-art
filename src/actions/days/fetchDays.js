@@ -1,7 +1,6 @@
 import AWS from 'aws-sdk';
-import {FETCH_ACTIVITIES} from '@actions/actionNames';
 import {DYNAMO_TABLES, CONFIG} from '@constants/AWS';
-import {updateActivitiesList} from '@actions/activities/updateActivitiesList';
+import {updateDays} from '@actions/days';
 import moment from 'moment';
 import {flatten, isEmpty} from 'lodash';
 
@@ -11,27 +10,25 @@ export const fetchActivities = (earliestTime, latestTime) => (dispatch, getStore
   const {user:{userId}} = getStore();
   const queryParams = {
     TableName: DYNAMO_TABLES.activities,
-    IndexName: "userId-startTime",
-    // figure out how to make range work, see AWS Loft dudes
-    KeyConditionExpression: "userId = :userId and startTime > :earliest",
+    IndexName: "userId-date",
+    KeyConditionExpression: "userId = :userId and date > :earliest",
     KeySchema: [
       {"AttributeName": "userId", "KeyType": "HASH"},
-      {"AttributeName": "startTime", "KeyType": "RANGE"}
+      {"AttributeName": "date", "KeyType": "RANGE"}
     ],
     ExpressionAttributeValues: {
       ":userId": userId,
       // ":latest": latest || moment().unix(),
       ":earliest":  earliestTime ? moment(earliestTime).unix() : moment().day(-1).unix()
-    },
-    Limit: 250
+    }
+
   };
 
   DB.query(queryParams, (error, result) => {
-    console.log('get acts', error, result);
+    console.log('get day', error, result);
     if(!error && result) {
       const allActs = isEmpty(result.Items) ? [] : flatten(result.Items);
-      console.log('flat acts', allActs);
-      allActs.map((act) => console.log(act))
+      console.log('flat day', allActs);
       dispatch(updateActivitiesList(allActs));
     }
   });
