@@ -7,8 +7,8 @@ import {
 import {
   HOME,
   PERSONAL_SETTINGS,
-  INTEGRATIONS
-} from 'constants/routes';
+  INTEGRATIONS,
+} from '@constants/routes';
 
 import styles from './styles';
 
@@ -17,17 +17,29 @@ export default ({navigateTo}) => {
   return (
     <View style={styles.container}>
       <View style={styles.activity}>
-        <TouchableOpacity style={styles.textContainer}>
+        <TouchableOpacity
+          onPress={() => navigateTo(HOME, {type: 'reset'})}
+          style={styles.textContainer}
+        >
           <Text style={styles.text}> Your Activity </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.connect}>
-        <TouchableOpacity style={styles.textContainer}>
+        <TouchableOpacity
+          onPress={() => navigateTo(
+            INTEGRATIONS,
+            {navigateToOAuth: (options) => navigateTo(OAUTH, options)}
+          )}
+          style={styles.textContainer}
+        >
           <Text style={styles.text}> Connect </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.settings}>
-        <TouchableOpacity style={styles.textContainer}>
+        <TouchableOpacity
+          onPress={() => navigateTo(PERSONAL_SETTINGS)}
+          style={styles.textContainer}
+        >
           <Text style={styles.text}> Settings </Text>
         </TouchableOpacity>
       </View>

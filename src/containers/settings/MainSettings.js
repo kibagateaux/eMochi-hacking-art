@@ -11,15 +11,8 @@ import {
 } from '@lib/constants/routes';
 import userActions from '@actions/user/';
 
-mapStateToProps = (state) => {
-  return {
-
-  }
-};
-
 mapDispatchToProps = (dispatch) => ({
-  navigateToOAuth: (options) => dispatch(navigateTo(OAUTH, options)),
-  updateLocalGameMode: () => dispatch(userActions.updateLocalGameMode())
+  navigateTo: (route, options) => dispatch(navigateTo(route, options)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainSettings)
+export default connect(null, mapDispatchToProps)(MainSettings)

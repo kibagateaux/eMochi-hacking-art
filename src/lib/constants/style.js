@@ -21,9 +21,9 @@ const colors = {
   secondary: '#fab050',
   white: '#ffffff',
   black: '#000000',
-  teal: "#FF6600",
-  magenta: "#CC0033",
-  orange: "#339999"
+  teal: "#339999", 
+  magenta: "#BB0033",
+  orange: "#FF8800"
 };
 
 export {font, colors};

@@ -13,7 +13,8 @@ import {
   PersonalSettingsScreen,
   MainSettingsScreen,
   OAuthScreen,
-  NonReferralIntro
+  NonReferralIntro,
+  IntegrationsScreen
 } from '@screens';
 
 import{
@@ -21,6 +22,7 @@ import{
   LOGIN,
   SIGNUP,
   SETTINGS,
+  PERSONAL_SETTINGS,
   OAUTH,
   INTEGRATIONS,
   NON_REFERRAL_INTRO
@@ -30,11 +32,12 @@ export default Actions.create(
   <Scene key="app">
     <Scene navBar={NavBar} key={HOME} title="Home" initial component={App} />  
     <Scene hideNavBar key={NON_REFERRAL_INTRO} title='Welcome Introduction' component={NonReferralIntro} />
-    <Scene initial navBar={NavBar} key={SETTINGS} title='Settings Screen' component={MainSettingsScreen} />
-    <Scene navBar={NavBar} key={INTEGRATIONS} title='Integrations Screen' component={PersonalSettingsScreen} />
-    <Scene navBar={NavBar} key={OAUTH} title="Portal for integrating other apps" component={OAuthScreen} />
-    <Scene hideNavBar key={LOGIN} title='Login Screen' component={LoginScreen} />
-    <Scene hideNavBar key={SIGNUP} title='Signup Screen' component={SignupScreen} />
+    <Scene navBar={NavBar} key={SETTINGS} title='Settings' component={MainSettingsScreen} />
+    <Scene navBar={NavBar} key={PERSONAL_SETTINGS} title='Personal Settings' component={PersonalSettingsScreen} />
+    <Scene navBar={NavBar} key={INTEGRATIONS} title='Integrations' component={IntegrationsScreen} />
+    <Scene navBar={NavBar} key={OAUTH} title="Connect App" component={OAuthScreen} />
+    <Scene hideNavBar key={LOGIN} title='Login' component={LoginScreen} />
+    <Scene hideNavBar key={SIGNUP} title='Signup' component={SignupScreen} />
   </Scene>
 );
  
