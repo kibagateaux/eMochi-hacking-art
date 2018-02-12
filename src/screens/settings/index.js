@@ -1,3 +1,9 @@
-import SettingsScreen from '@containers/settings';
-import PersonalSettingsScreen from '@containers/settings/PersonalSettings';
-export  {SettingsScreen, PersonalSettingsScreen};
+import {
+  MainSettings as MainSettingsScreen,
+  PersonalSettings as PersonalSettingsScreen
+} from '@containers/settings';
+
+export {
+  MainSettingsScreen,
+  PersonalSettingsScreen
+};

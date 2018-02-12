@@ -20,7 +20,10 @@ const colors = {
   primary: '#14b9d6',
   secondary: '#fab050',
   white: '#ffffff',
-  black: '#000000'
+  black: '#000000',
+  teal: "#FF6600",
+  magenta: "#CC0033",
+  orange: "#339999"
 };
 
 export {font, colors};

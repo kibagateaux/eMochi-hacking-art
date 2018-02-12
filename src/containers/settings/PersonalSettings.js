@@ -3,7 +3,7 @@ import {
   View,
   Text,
 } from 'react-native';
-import PersonalSettings from '@components/settings/PersonalSettings';
+import {PersonalSettings} from '@components/settings';
 import {connect} from 'react-redux';
 import {navigateTo} from '@actions/navigation/navigateTo';
 import {initIntegrationAuth} from '@actions/auth';

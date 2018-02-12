@@ -39,7 +39,6 @@ export default StyleSheet.create({
   leftIcon: {
     flex: 1,
     zIndex: 1000, // makes sure menu/back icon is always pressable
-    // marginLeft: width / 24,
     marginTop: height / 42,
     alignSelf: 'center'
   },

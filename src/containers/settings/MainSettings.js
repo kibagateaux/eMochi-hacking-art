@@ -3,7 +3,7 @@ import {
   View,
   Text,
 } from 'react-native';
-import Settings from '@components/Settings';
+import {MainSettings} from '@components/settings';
 import {connect} from 'react-redux';
 import {navigateTo} from '@actions/navigation/navigateTo';
 import {
@@ -22,4 +22,4 @@ mapDispatchToProps = (dispatch) => ({
   updateLocalGameMode: () => dispatch(userActions.updateLocalGameMode())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Settings)
+export default connect(mapStateToProps, mapDispatchToProps)(MainSettings)
