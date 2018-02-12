@@ -5,7 +5,7 @@ const {height, width} = Dimensions.get('window');
 export default StyleSheet.create({
   container: {
     height: height / 8,
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.orange,
     flexDirection: 'column',
     alignItems: 'stretch',
     justifyContent: 'space-between'

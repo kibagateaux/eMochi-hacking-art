@@ -9,13 +9,22 @@ import {colors} from '@constants/style';
 import styles from './styles';
 
 
-export default ({activity, count, metric, size, style}) => {
+export default (props) => {
+  const {
+    activity,
+    count,
+    metric,
+    size, 
+    style,
+    iconColor
+  } = props;
   const {source, name} = getIconNameForActivity(activity);
   console.log('act icon', activity, count, name, getIconColorForActivity(activity));
   const backgroundColor = {backgroundColor: getIconColorForActivity(activity)}
   return (
   <View style={[styles.iconContainer, style]} key={activity}>
     <Icon
+      color={iconColor}
       name={name}
       type={source}
       raised

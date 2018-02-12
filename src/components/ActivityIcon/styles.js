@@ -8,7 +8,7 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   metricContainer: {
-    alignSelf: 'stretch',
+    alignSelf: 'center',
     alignItems: 'flex-start',
     flexDirection: 'column'
   },
