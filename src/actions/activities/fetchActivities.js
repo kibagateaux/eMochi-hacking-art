@@ -34,7 +34,7 @@ export const fetchActivities = (earliestTime, latestTime) => (dispatch, getStore
     console.log('get acts', error, result);
     if(!error && result) {
       const allActs = isEmpty(result.Items) ? [] : flatten(result.Items);
-      dispatch(updateActivitiesList(allActs));
+      // dispatch(updateActivitiesList(allActs)); // redundant with updateDays
       const parsedActs = parseListIntoDays(allActs);
       console.log('parse act into days', parsedActs);
       dispatch(updateDays(parsedActs));

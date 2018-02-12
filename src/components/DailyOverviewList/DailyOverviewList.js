@@ -8,10 +8,10 @@ import DailyOverview from '@containers/DailyOverview';
 
 export default (props) => {
   const {days} = props;
-  const dayOverviews = days ? Object.keys(days).map((date) => {
-    console.log('day', date);
-    return <DailyOverview key={date} date={date} />
-  }) : [];
+  const dayOverviews = days ? 
+    Object.keys(days).map((date) =>
+      <DailyOverview key={date} date={date} activities={days[date].activities}/>) : 
+    [];
   
   return (
     <ScrollView style={styles.container}>

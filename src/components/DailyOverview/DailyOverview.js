@@ -5,7 +5,8 @@ import {
   Image
 } from 'react-native'
 import {Icon} from 'react-native-elements'
-import moment from 'moment';
+import {unix, duration} from 'moment';
+import {mapValues, isObject} from 'lodash';
 
 import ActivityCircle from '../ActivityCircle/ActivityCircle';
 import ActivityIcon from '../ActivityIcon/ActivityIcon';
@@ -19,20 +20,25 @@ export default (props) => {
   const {
     date,
     days,
+    activities,
     yesterdayResultantAvatar
   } = props;
 
-  const dayActivities = days[date] ? days[date].activities || []: []
-  
-  
-  console.log('props', props, dayActivities);
+  // if passed specific activities to render else use all activities from day
+  const dayActivities = activities || days[date] ? days[date].activities : [];
   const activitiesSummary = summarizeActivityTypes(dayActivities);
   // once Activity Circle API is figured out use act summary to make colors stuff
-  console.log('act types', Object.keys(activitiesSummary), Object.keys(activitiesSummary).length);
   const formattedDate = Number(date) ?
-    moment.unix(date / 1000).format("MMM Do").split(' ') :
+    unix(date / 1000).format("MMM Do").split(' ') :
     ["NO", "DATE"];
   const todayResultantAvatar = null; // some calculation on dayAcivities to see how much work you did
+  const minuteVals = mapValues(activitiesSummary, (value) =>
+    isObject(value) ?
+      mapValues(value, (times) =>
+        Number(times) ? duration(times).minutes() : 0) :
+        Number(value) ? duration(value).minutes() : 0); // what is defult?
+
+  console.log('act types', activitiesSummary, minuteVals);
 
   return (
     <View style={styles.container}>
@@ -63,7 +69,7 @@ export default (props) => {
           />
         </View>
         <View style={styles.summaryContainer}>
-          {generateIcons(activitiesSummary)}
+          {generateIcons(minuteVals)}
         </View>
       </View>
     </View>
@@ -73,21 +79,22 @@ export default (props) => {
 const getActivityMetric = (activity) => {
   // currently all by time until figure out appropriate information to present user
   switch(activity) {
-    case "walking": return "hr."; // depends on locale and how it is kept in db
-    case "running": return "hr.";
-    case "idle": return "hr.";
-    case "transporting": return "hr.";
-    case "cycling": return "hr.";
-    case "eating": return "hr.";
+    case "walking": return "min"; // depends on locale and how it is kept in db
+    case "running": return "min";
+    case "idle": return "min";
+    case "transport": return "min";
+    case "cycling": return "min";
+    case "eating": return "min";
     default: return "person";
   }
-}
+};
 
 const generateIcons = (acts) => 
   Object.keys(acts).map((actType) => (
     <ActivityIcon
+      key={actType}
       activity={actType}
-      count={acts[actType].duration}
+      count={acts[actType].totalDuration}
       metric={getActivityMetric(actType)}
     />
   ));

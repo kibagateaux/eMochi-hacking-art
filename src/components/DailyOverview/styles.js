@@ -8,7 +8,20 @@ export default StyleSheet.create({
     width: width,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: height / 32
+    marginVertical: height / 32,
+    paddingHorizontal: width / 32
+  },
+  dateContainer: {
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    width: width / 4,
+    height: width / 4,
+    alignItems: 'center',
+    alignSelf: 'center',
+  },
+  dateText: {
+    fontSize: font.size.medium,
+    fontWeight: font.weight.bold
   },
   rightContainer: {
     flex: 3,
@@ -17,41 +30,20 @@ export default StyleSheet.create({
     alignItems: 'center',
     marginLeft: width / 32
   },
-  summaryContainer:{
-    flexDirection: 'row',
-    justifyContent: 'space-around'
-  },
+
   avatarContainer:{
     alignSelf: 'flex-start',    
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
-  dateContainer:{
-    flex: 1,
-    justifyContent: 'space-around',
-    alignSelf: 'center',
-    alignItems: 'center',
-    padding: width / 48
-  },
-  dateContainer: {
-    width: width / 4,
-    height: width / 4,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    flexDirection: 'column',
-  },
-  dateText: {
-    fontSize: font.size.medium,
-    fontWeight: font.weight.bold
-  },
   iconGif: {
     height: height / 6,
     width: height / 6
   },
-  iconContainer: {
-    flex: 1,
+
+  summaryContainer:{
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center'
-  }
+  },
 });
