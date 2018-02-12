@@ -35,7 +35,7 @@ export default class App extends Component {
     this.branchUnsubcription = branch.subscribe(({params, error}) => {
       const url = params['+url'] || params['+non_branch_link'];
       if(params['+is_first_session']) {
-        props.navigateToNonReferralIntro({params, user: props.user});
+        // props.navigateToNonReferralIntro({params, user: props.user});
       }
     });
 

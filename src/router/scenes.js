@@ -30,7 +30,7 @@ import{
 
 export default Actions.create(
   <Scene key="app">
-    <Scene navBar={NavBar} key={HOME} title="Home" initial component={App} />  
+    <Scene initial navBar={NavBar} key={HOME} title="Home" component={App} />  
     <Scene hideNavBar key={NON_REFERRAL_INTRO} title='Welcome Introduction' component={NonReferralIntro} />
     <Scene navBar={NavBar} key={SETTINGS} title='Settings' component={MainSettingsScreen} />
     <Scene navBar={NavBar} key={PERSONAL_SETTINGS} title='Personal Settings' component={PersonalSettingsScreen} />

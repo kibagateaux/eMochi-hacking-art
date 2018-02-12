@@ -23,7 +23,10 @@ const colors = {
   black: '#000000',
   teal: "#339999", 
   magenta: "#BB0033",
-  orange: "#FF8800"
+  orange: "#FF8800",
+  red: "red",
+  yellow: "yellow",
+  
 };
 
 export {font, colors};

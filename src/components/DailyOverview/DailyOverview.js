@@ -93,6 +93,7 @@ const generateIcons = (acts) =>
   Object.keys(acts).map((actType) => (
     <ActivityIcon
       key={actType}
+      style={styles.activityIcon}
       activity={actType}
       count={acts[actType].totalDuration}
       metric={getActivityMetric(actType)}

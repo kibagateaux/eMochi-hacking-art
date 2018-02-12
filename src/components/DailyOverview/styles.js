@@ -7,7 +7,7 @@ export default StyleSheet.create({
     flex: 1,
     width: width,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     marginVertical: height / 32,
     paddingHorizontal: width / 32
   },
@@ -30,7 +30,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     marginLeft: width / 32
   },
-
   avatarContainer:{
     alignSelf: 'flex-start',    
     flexDirection: 'row',
@@ -40,10 +39,13 @@ export default StyleSheet.create({
     height: height / 6,
     width: height / 6
   },
-
   summaryContainer:{
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'center'
   },
+  activityIcon: {
+    paddingHorizontal: width / 60,
+    paddingVertical: height / 72
+  }
 });
