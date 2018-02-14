@@ -7,8 +7,8 @@ import {INTEGRATION_REQUESTS, USER_PROFILE} from '@constants/asyncStorage';
 import {integrationAuthCalls} from '@constants/integrations';
 
 export const initIntegrationAuth = (serviceName) => async (dispatch) => {
-  console.log('init auth', serviceName);
   const user = JSON.parse(await AsyncStorage.getItem(USER_PROFILE));
+  console.log('init auth', serviceName);
   if(integrationAuthCalls[serviceName] && user) {
     const requestId = uuid.v4();
     const integrationStorage = await AsyncStorage.getItem(INTEGRATION_REQUESTS);

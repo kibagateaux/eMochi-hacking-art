@@ -1,31 +1,38 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import {font, colors} from '@constants/style';
-
 const {height, width} = Dimensions.get('window');
 
-
+const borderRadius = width / 12
 export default StyleSheet.create({
   modal: {
     flex: 1,
-    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  background: {
+    backgroundColor: 'black',
+    opacity: 0.8,
+    alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: height / 3,
-    paddingHorizontal: width / 6,
+    flexDirection: 'column',
+    ...StyleSheet.absoluteFillObject
+
   },
   contentContainer: {
-    flex: 1,
-    backgroundColor: 'black',
-    opacity: 0.8
-  },
-  close: {
-    flex: 1,
-    backgroundColor: colors.primary,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    height: height / 1.5,
+    width: width / 1.2,
+    alignSelf: 'center',
     alignItems: 'center',
-    justifyContent: 'space-around'
+    backgroundColor: colors.white,
+    borderTopLeftRadius: borderRadius,
+    borderTopRightRadius: borderRadius,
+    borderBottomLeftRadius: borderRadius,
+    borderBottomRightRadius: borderRadius,
   },
+
   title: {
-    flex: 1,
-    paddingVertical: height / 12,
+    flex: 2,
     fontSize: font.size.large,
     color: colors.white,
     textAlign: 'center',
@@ -33,14 +40,12 @@ export default StyleSheet.create({
   },
   image: {
     flex: 3,
-    height: height / 3,
-    width: width
+    alignSelf: 'stretch'
   },
-  linkButton: {
+  button: {
     flex: 1,
-    height: height / 24,
-    width: width,
-    backgroundColor:colors.primary,
+    borderRadius: width / 30,
+    backgroundColor: colors.primary,
     alignItems: 'center',
     justifyContent: 'space-around'
   },

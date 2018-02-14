@@ -26,6 +26,7 @@ export default class extends Component {
   render() {
     const {
       title,
+      subtitle,
       link,
       image
     } = this.props;
@@ -36,17 +37,19 @@ export default class extends Component {
         visible={this.state.visible}
         style={styles.modal}
       >
-        <View style={styles.contentContainer}>
-          <TouchableOpacity onPress={close} style={styles.close}>
-            <Text> CLOSE!! </Text>
-          </TouchableOpacity>
-          <Text style={styles.title}>
-            {title} ARTICLE TITLE
-          </Text>
-          <Image source={image} style={styles.image}/>
-          <TouchableOpacity onPress={openArticle} style={styles.linkButton}>
-            <Text style={styles.linkText}> Readeth And Get Woke! </Text>
-          </TouchableOpacity>
+        <View style={styles.background}> 
+          <View style={styles.contentContainer}>
+            <Text style={styles.title}>
+              {title} ARTICLE TITLE
+            </Text>
+            <Image source={image} style={styles.image}/>
+            <TouchableOpacity onPress={close} style={styles.button}>
+              <Text> CLOSE!! </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={openArticle} style={styles.button}>
+              <Text style={styles.linkText}> Readeth And Get Woke! </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </Modal>
     );

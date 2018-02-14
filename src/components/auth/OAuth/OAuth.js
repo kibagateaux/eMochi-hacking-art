@@ -9,13 +9,11 @@ import {CONNECT_THIRD_PARTY_APP} from '@constants/analytics';
 // which permissions and why the app will help them.
 export default (props) => {
   const {
+    user,
     appName,
     appLogo,
     description,
-    onMainButtonPress,
-    onAltButtonPress,
     navigateToLogin,
-    user,
     trackUserBehaviour,
     initIntegrationAuth
   } = props;
@@ -42,36 +40,33 @@ export default (props) => {
     trackUserBehaviour(CONNECT_THIRD_PARTY_APP, {appName, description});
   };
 
+  const renderConnectButton = () => (
+    <View style={styles.buttonContainer}>
+      <Text style={styles.connectText}>
+        Make sure you have {appName} downloaded before connecting
+      </Text>
+      <Button
+        text="Connect App"
+        buttonStyle={styles.connectButton}
+        onPress={onConnectPress}
+      />
+    </View>
+  );
+
+  console.log(' rend oauth' );
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.logoContainer}> 
-          <Image source={require('@media/image/logos/emochiLogo.png')} style={styles.appLogo}
-            resizeMode="contain" resizeMethod="resize"/>
-            <Text> {"<---------->"} </Text>
-          <Image source={appLogo} style={styles.appLogo}
-            resizeMode="contain" resizeMethod="resize"/>
-        </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.appName}> {appName} </Text>
-          <Text style={styles.description}> {description} </Text>
-        </View>
+      <View style={styles.logoContainer}> 
+        <Image source={appLogo} style={styles.appLogo}
+          resizeMode="contain" resizeMethod="resize"/>
       </View>
-      {(!user.userId && 
-        renderLoggedOutText())} 
-      <View style={styles.buttonContainer}>
-      {(user.userId && 
-        (<Text> Make sure you have {appName} downloaded before connecting </Text> &&
-        <Button
-          buttonStyle={styles.actionButton}          
-          containerStyle={styles.actionButton}          
-          buttonText="Connect App"
-          onPress={onConnectPress}
-          secondaryColor
-        />))}
+      <View style={styles.spacer}/>
+      <View style={styles.textContainer}>
+        <Text style={styles.appName}> {appName} </Text>
+        <Text style={styles.description}> {description} </Text>
       </View>
+      {user.userId ? renderConnectButton() : renderLoggedOutText()}
     </View>
   );
 };
-
 

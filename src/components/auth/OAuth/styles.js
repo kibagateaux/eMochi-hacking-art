@@ -8,30 +8,24 @@ export default StyleSheet.create({
     height: height / 1.16,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-  header: {
-    height: height / 3,
-    width: width,
-    zIndex: 5,
     justifyContent: 'space-around',
-    alignItems: 'center',
   },
   logoContainer: {
-    flexDirection: 'row',
+    flex: 1,
+    flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    marginVertical: height / 32
+    justifyContent: 'center',
   },
   appLogo: {
     flex: 1,
-    // paddingHorizontal: width / 32,
-    // paddingVertical: height / 64,
-    // width: width
-    
+    height: height / 18,
+    width: width / 2
+  },
+  spacer: {
+    flex: 0.2
   },
   textContainer: {
-    paddingVertical: height / 32,
+    flex: 1,
     alignItems: 'center'
   },
   appName: {
@@ -54,11 +48,19 @@ export default StyleSheet.create({
     margin: 20
   },
   buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between'
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start'
   },
-  actionButton: {
-    padding: width / 20,
-    alignItems: 'center'
+  connectText: {
+    paddingHorizontal: width / 60,
+    marginVertical: height / 60,
+    textAlign: 'center'
+  },
+  connectButton: {
+    alignSelf: 'center',
+    backgroundColor: colors.white,
+    width: width / 4,
+    borderRadius: width / 12,
   }
 });

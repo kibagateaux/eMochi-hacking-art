@@ -3,7 +3,7 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Image
+  Image,
 } from 'react-native';
 import {Icon} from 'react-native-elements';
 import {SETTINGS} from '@constants/routes';
@@ -13,8 +13,9 @@ import styles from './styles';
 export default (props) => {
   const lastScene = props.scenes[props.scenes.length - 2];
   const leftIcon = props.leftIcon || !lastScene ? "menu" : "keyboard-backspace";
-  const leftPress = props.leftPress || (props.scenes.length <= 1) ?
-  props.navigateToSettings : () => props.navigateBack()
+  const leftPress = (props.leftPress || (props.scenes.length <= 1)) ?
+    props.navigateToSettings : () => props.navigateBack()
+
   return (
     <View style={styles.container}>
       <View style={styles.space} />

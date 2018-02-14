@@ -1,2 +1,2 @@
-import IntegrationsScreen from '@components/IntegrationsList/IntegrationsList';
+import IntegrationsScreen from '@containers/IntegrationsList';
 export {IntegrationsScreen};

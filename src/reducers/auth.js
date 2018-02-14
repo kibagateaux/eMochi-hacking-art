@@ -6,6 +6,7 @@ import {
 
 const INITIAL_STATE = {
   username: null,
+  userId: null,
   tokens: {},
   requestIds: {}
 };
