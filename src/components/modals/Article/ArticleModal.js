@@ -5,12 +5,13 @@ import {
   Modal,
   Linking,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  StyleSheet
 } from 'react-native'
 import styles from './styles';
 
+export default class Untitled extends Component {
 
-export default class extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,36 +19,43 @@ export default class extends Component {
     }
   }
 
-  openLink(link) {
-    // FIXME: error handling
-    Linking.open(link);
+  openLink = () => {
+    const {link} = this.props;
+    (link && Linking.canOpenURL(link)) ? Linking.openURL(link) : this.close();
   }
+
+  close = () => this.setState({visible: false});
 
   render() {
     const {
       title,
       subtitle,
-      link,
       image
     } = this.props;
-    const openArticle = () => this.openLink(link);
-    const close = () => this.setState({visible: false});
     return (
-      <Modal
-        visible={this.state.visible}
-        style={styles.modal}
-      >
-        <View style={styles.background}> 
-          <View style={styles.contentContainer}>
-            <Text style={styles.title}>
-              {title} ARTICLE TITLE
-            </Text>
-            <Image source={image} style={styles.image}/>
-            <TouchableOpacity onPress={close} style={styles.button}>
-              <Text> CLOSE!! </Text>
+      <Modal visible={this.state.visible} animationType="slide">
+        <View style={styles.root}>
+          <View style={styles.rect2}>
+            <View style={styles.articleTitleContainer}>
+              <Text style={styles.title}>{title}</Text>
+              <Text style={styles.subtitle}>{subtitle}</Text>
+            </View>
+            <Image
+              style={styles.image1}
+              source={image || require("@media/image/orangeMountains.png")}
+              resizeMode="stretch"
+            />
+            <TouchableOpacity
+              style={styles.skipButton}
+              onPress={this.close}
+            >
+              <Text style={styles.closeText}>Close</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={openArticle} style={styles.button}>
-              <Text style={styles.linkText}> Readeth And Get Woke! </Text>
+            <TouchableOpacity
+              style={styles.linkButton}
+              onPress={this.openLink}
+            >
+              <Text style={styles.linkText}>Get Woke</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -55,3 +63,4 @@ export default class extends Component {
     );
   }
 }
+

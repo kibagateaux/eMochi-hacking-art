@@ -17,6 +17,8 @@ import sampleActs from '@lib/sampleActivitiesData';
 import {parseListIntoDays} from '@helpers/time';
 import sampleActivitiesData from '../../lib/sampleActivitiesData';
 
+import articles from '@lib/media/articles.js';
+
 export default class App extends Component {
   constructor(props){
     super(props);
@@ -94,12 +96,19 @@ export default class App extends Component {
       <LocalGame /> :
       <DailyOverviewList />;
   
+  _renderArticleModal() {
+    const articleCount = articles.length;
+    const selectArticle = () =>
+      articles[Math.floor(Math.random() * articleCount)];
+    return <Article {...selectArticle()} />
+  }
+
   render() {
     return (
       <View style={styles.container}> 
         <HomeProfile />
         {this._renderLowerPanel()}
-        {/* <Article /> */}
+        {this._renderArticleModal()}
       </View>
     )
 
