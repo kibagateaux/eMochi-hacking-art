@@ -8,6 +8,7 @@ import io.branch.rnbranch.RNBranchPackage;
 import io.branch.referral.Branch;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.airlabsinc.RNAWSCognitoPackage;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -31,7 +32,8 @@ public class MainApplication extends Application implements ReactApplication {
             new RNSentryPackage(MainApplication.this),
             new RNBranchPackage(),
             new VectorIconsPackage(),
-            new RNAWSCognitoPackage()
+            new RNAWSCognitoPackage(),
+            new ReactNativePushNotificationPackage()
       );
     }
 

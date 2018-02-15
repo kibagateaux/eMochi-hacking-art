@@ -1,6 +1,7 @@
 package com.emochi;
 
 import com.facebook.react.ReactActivity;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import io.branch.rnbranch.*;
 import android.content.Intent;
 

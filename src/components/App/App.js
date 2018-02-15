@@ -3,6 +3,7 @@ import {View} from 'react-native';
 import axios from 'axios';
 import branch from 'react-native-branch';
 import uuid from 'uuid';
+import PushNotification from 'react-native-push-notification';
 
 import HomeProfile from '@containers/HomeProfile';
 import LocalGame from '@containers/LocalGame';
@@ -50,7 +51,7 @@ export default class App extends Component {
       //   axios.get(`https://z7udwcips0.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${userId}`)
       //   .then((res) => {
       //     console.log('res', res);
-            // props.fetchActivities(); // pull from dynamo instead of recieving from API
+            // props.fetchActivities(); // FIXME: Update API to not return data unnecesarily
       //     if(res.data) {
       //       res.data.map((day) => {
       //           // This is incorrect for many reasons
